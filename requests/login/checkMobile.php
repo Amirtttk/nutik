@@ -1,4 +1,5 @@
 <?php
+
 $count = checkLoginAttempts($_SERVER['REMOTE_ADDR'], time());
 $count2 = checkLoginAttempts($_SERVER['REMOTE_ADDR'], time(), 'req');
 $text = '';
@@ -9,7 +10,7 @@ if ($count < 5 && $count2 < 15) {
     ]);
     if ($validate_filds["status"]) {
         $getUserByMobile = getUserByMobile((int) substr(POST('mobile'), 2));
-        $code = generateDigit(6);
+        $code = generateDigit(4);
         $_SESSION['confirm_code'] = $code;
         $_SESSION['confirm_code_time'] = time();
         $_SESSION['mobile'] = (int) substr(POST('mobile'), 2);

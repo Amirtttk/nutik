@@ -397,6 +397,7 @@ function translate($word, $is_rule = false)
             'address' => 'آدرس ',
             'post_code' => 'کد پستی ',
             'shipping_code' => 'کد رهگیری',
+            'codeUser' => 'کد ارسالی',
         ],
     ];
     if ($is_rule) {
@@ -687,6 +688,29 @@ function calculateShippingCostForCart($hide = false)
     }
 
     return $hide ? $totalCost : number_format($totalCost) . ' تومان';
+}
+function generateReferralCode($prefix = 'REF', $length = 7): string
+{
+    $code = $prefix;
+
+    for ($i = 0; $i < $length; $i++) {
+        $code .= random_int(0, 9);
+    }
+
+    // چک یکتا بودن در دیتابیس؛ در صورت تکراری بودن دوباره میسازیم
+    if (referralCodeExists($code)) {
+        return generateReferralCode($prefix, $length); // بازگشتی
+    }
+
+    return $code;
+}
+
+function referralCodeExists(string $code): bool
+{
+    global $cn;
+    $stmt = $cn->prepare("SELECT id FROM users WHERE referralCode = ? LIMIT 1");
+    $stmt->execute([$code]);
+    return $stmt->rowCount() > 0;
 }
 
 

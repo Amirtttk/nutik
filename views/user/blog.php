@@ -148,7 +148,10 @@ $getInformation = getInformation();
     <?php
     }
     ?>
-
+     <?php
+     $getAllBlogDece = getAllBlogDece();
+     if($getAllBlogDece){
+     ?>
     <!-- best blogs -->
     <div class="mt-16 xl:mt-20 rounded-4xl">
       <!-- top -->
@@ -171,37 +174,50 @@ $getInformation = getInformation();
       <div class="pb-4">
         <div class="swiper blogs">
           <div class="swiper-wrapper px-2 py-14">
-            <a href="#" class="swiper-slide product-card h-auto bg-white relative p-2 rounded-3xl transform transition-all duration-300 hover:-translate-y-1 overflow-hidden shadow-custom2">
-              <div class="p-2">
-                <img class="rounded-2xl" src="./../../assets/user/image/blog/1.jpg" alt="">
-              </div>
-              <div class="text-sm xl:text-s mt-2 text-zinc-700 font-yekanBakhBold flex gap-x-2 items-center text-justify">
-                <div class="h-10 w-1 bg-primary-500 rounded-lg"></div>
-                <span class="leading-6">
-                  آموزش استفاده از مکمل های ورزشی
+              <?php
+              foreach ($getAllBlogDece as $AllBlogDece){
+                  ?>
+                  <a href="/blogSingle?trak=<?= $AllBlogDece['id'] ?>&slug=<?= $AllBlogDece['slug'] ?>" class="swiper-slide product-card h-auto bg-white relative p-2 rounded-3xl transform transition-all duration-300 hover:-translate-y-1 overflow-hidden shadow-custom2">
+                      <div class="p-2">
+                          <img class="rounded-2xl" src="../../public/images/blog/<?= $AllBlogDece['image_name']; ?>" alt="">
+                      </div>
+                      <div class="text-sm xl:text-s mt-2 text-zinc-700 font-yekanBakhBold flex gap-x-2 items-center text-justify">
+                          <div class="h-10 w-1 bg-primary-500 rounded-lg"></div>
+                          <span class="leading-6">
+                     <?= $AllBlogDece['title'] ?>
                 </span>
-              </div>
-              <div class="text-smm xl:text-sm text-zinc-400 text-justify mt-2 font-yekanBakhRegular leading-6">
-                باشگاه فوتبال نوتیک فقط جایی برای تمرین فوتبال نیست؛ جایی است که استعدادها کشف می‌شوند، شخصیت‌ها ساخته می‌شوند
-              </div>
-              <div class="h-[1px] w-full bg-gradient-to-r from-white via-zinc-200 to-white my-3">
-              </div>
-              <div class="flex justify-between items-center px-1.5 pb-2 md:pb-1.5">
-                <div class="flex items-center text-zinc-400 text-smm xl:text-sm font-yekanBakhRegular gap-x-1">
-                  <svg class="fill-zinc-400 size-5 xl:size-5.5" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#000000" viewBox="0 0 256 256"><path d="M232,136.66A104.12,104.12,0,1,1,119.34,24,8,8,0,0,1,120.66,40,88.12,88.12,0,1,0,216,135.34,8,8,0,0,1,232,136.66ZM120,72v56a8,8,0,0,0,8,8h56a8,8,0,0,0,0-16H136V72a8,8,0,0,0-16,0Zm40-24a12,12,0,1,0-12-12A12,12,0,0,0,160,48Zm36,24a12,12,0,1,0-12-12A12,12,0,0,0,196,72Zm24,36a12,12,0,1,0-12-12A12,12,0,0,0,220,108Z"></path></svg>
-                  4 دقیقه
-                </div>
-                <button class="bg-primary-600 hover:bg-white group rounded-2xl p-2.5 xl:p-3 transition-all duration-300 hover:shadow-custom2 cursor-pointer flex gap-x-1">
+                      </div>
+                      <div class="text-smm xl:text-sm text-zinc-400 text-justify mt-2 font-yekanBakhRegular leading-6">
+                          <?= mb_strlen($AllBlogDece['description']) > 150 ? mb_substr($AllBlogDece['description'], 0, 150) . '...' : $AllBlogDece['description'] ?>
+                      </div>
+                      <div class="h-[1px] w-full bg-gradient-to-r from-white via-zinc-200 to-white my-3">
+                      </div>
+                      <div class="flex justify-between items-center px-1.5 pb-2 md:pb-1.5">
+                          <div class="flex items-center text-zinc-400 text-smm xl:text-sm font-yekanBakhRegular gap-x-1">
+                              <svg class="fill-zinc-400 size-5 xl:size-5.5" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#000000" viewBox="0 0 256 256"><path d="M232,136.66A104.12,104.12,0,1,1,119.34,24,8,8,0,0,1,120.66,40,88.12,88.12,0,1,0,216,135.34,8,8,0,0,1,232,136.66ZM120,72v56a8,8,0,0,0,8,8h56a8,8,0,0,0,0-16H136V72a8,8,0,0,0-16,0Zm40-24a12,12,0,1,0-12-12A12,12,0,0,0,160,48Zm36,24a12,12,0,1,0-12-12A12,12,0,0,0,196,72Zm24,36a12,12,0,1,0-12-12A12,12,0,0,0,220,108Z"></path></svg>
+                              <?php
+                              if ($AllBlogTop['reading_time']){
+                                  echo $AllBlogTop['reading_time'] . 'دقیقه ';
+                              }
+                              ?>
+                          </div>
+                          <button class="bg-primary-600 hover:bg-white group rounded-2xl p-2.5 xl:p-3 transition-all duration-300 hover:shadow-custom2 cursor-pointer flex gap-x-1">
                   <span class="text-white text-smm xl:text-sm font-yekanBakhBold group-hover:text-primary-600 transition-all duration-300">
                     مشاهده مقاله
                   </span>
-                  <svg class="group-hover:fill-primary-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#ffffff" viewBox="0 0 256 256"><path d="M197.66,197.66a8,8,0,0,1-11.32,0L72,83.31V168a8,8,0,0,1-16,0V64a8,8,0,0,1,8-8H168a8,8,0,0,1,0,16H83.31L197.66,186.34A8,8,0,0,1,197.66,197.66Z"></path></svg>
-                </button>
-              </div>
-            </a>
+                              <svg class="group-hover:fill-primary-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#ffffff" viewBox="0 0 256 256"><path d="M197.66,197.66a8,8,0,0,1-11.32,0L72,83.31V168a8,8,0,0,1-16,0V64a8,8,0,0,1,8-8H168a8,8,0,0,1,0,16H83.31L197.66,186.34A8,8,0,0,1,197.66,197.66Z"></path></svg>
+                          </button>
+                      </div>
+                  </a>
+                  <?php
+              }
+              ?>
           </div>
         </div>
       </div>
     </div>
+    <?php
+    }
+    ?>
   </main>
 

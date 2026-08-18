@@ -751,4 +751,112 @@ function createCommet(product) {
     },
   });
 }
+function checkMobile() {
+  let mobile = document.getElementById("mobile").value;
+  $.ajax({
+    url: "requests/login/checkMobile.php",
+    type: "POST",
+    dataType: "json",
+    data: {
+      mobile,
+    },
+    success: function (response) {
+      if (response.status == 200) {
+        document
+            .getElementById("showError")
+            .classList.replace("text-danger", "text-success");
+        document.getElementById("showError").innerHTML = "کمی صبر کنید ...";
 
+        setTimeout(() => {
+          document.getElementById("formNowLogin").style.display = "none";
+          document.getElementById("formNewLogin").style.display = "block";
+
+          document.getElementById("showCode").innerHTML = response.code;
+          timers(
+              120,
+              document.getElementById("nowTime"),
+              document.getElementById("spanTimer")
+          );
+        }, 1000);
+      } else if (response.status == 400) {
+        document
+            .getElementById("showError")
+            .classList.replace("text-success", "text-danger");
+        document.getElementById("showError").innerHTML = response.text;
+      } else if (response.status == 500) {
+        document
+            .getElementById("showError")
+            .classList.replace("text-success", "text-danger");
+        document.getElementById("showError").innerHTML = response.text;
+        document
+            .getElementById("btnCheckMobile")
+            .setAttribute("disabled", true);
+        document.getElementById("btnCheckMobile").removeAttribute("onclick");
+        document.getElementById("btnCheckMobile").removeAttribute("id");
+      } else {
+        document
+            .getElementById("showError")
+            .classList.replace("text-success", "text-danger");
+        document.getElementById("showError").innerHTML = response.text;
+      }
+    },
+  });
+}
+function checkCode() {
+  let fullCode = "";
+  $('.code-input').each(function() {
+    fullCode += $(this).val(); // مقادیر رو کنار هم می‌چسبونیم
+  });
+
+  $.ajax({
+    url: "requests/login/checkCode.php",
+    type: "POST",
+    dataType: "json",
+    data: {
+      codeUser: fullCode
+    },
+    success: function (response) {
+      if (response.status == 200) {
+        document
+            .getElementById("showError2")
+            .classList.replace("text-danger", "text-success");
+        document.getElementById("showError2").innerHTML = "کمی صبر کنید ...";
+
+        document.getElementById('loginCloseBtn').innerHTML = `<div class="flex items-center py-2 px-2 rounded-xl bg-gradient-to-bl from-primaryRed-400 to-primaryRed-500 hover:opacity-85 transition shadow-lg shadow-primaryRed-500/50 relative">
+                    <a href="/profile" class="text-gray-100 flex gap-x-1 items-center" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#ffffff" viewBox="0 0 256 256"><path d="M229.19,213c-15.81-27.32-40.63-46.49-69.47-54.62a70,70,0,1,0-63.44,0C67.44,166.5,42.62,185.67,26.81,213a6,6,0,1,0,10.38,6C56.4,185.81,90.34,166,128,166s71.6,19.81,90.81,53a6,6,0,1,0,10.38-6ZM70,96a58,58,0,1,1,58,58A58.07,58.07,0,0,1,70,96Z"></path></svg>
+                        <span class="hidden lg:block text-sm">
+              حساب کاربری
+            </span>
+                    </a>
+                </div>`;
+        hideLoginRegisterModal();
+        // setTimeout(() => {
+        //     location.replace("/profile");
+        // }, 1500);
+      } else {
+        document
+            .getElementById("showError2")
+            .classList.replace("text-success", "text-danger");
+        document.getElementById("showError2").innerHTML = response.text;
+      }
+    },
+  });
+}
+function autoClickForLogin() {
+  if (document.getElementById("codeUser").value.length == 6)
+    document.getElementById("btnSubmitCode").click();
+}
+function logout() {
+  $.ajax({
+    url: `${domain}requests/user/logout.php`,
+    type: "POST",
+    data: {},
+    success: function (response) {
+      response = JSON.parse(response);
+      if (response.status == 200) {
+        location.replace("/");
+      }
+    },
+  });
+}

@@ -158,6 +158,17 @@ function getAllBlogTop()
     }
     return false;
 }
+function getAllBlogDece()
+{
+    global $cn;
+    $sql = "select * from blog where status = 1 ORDER BY id desc LIMIT 12  ";
+    $result = $cn->query($sql);
+    $result->execute();
+    if ($result->rowCount() > 0) {
+        return $result->fetchAll();
+    }
+    return false;
+}
 function getOneBlogForSlug($slug,$id)
 {
     try {
