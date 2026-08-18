@@ -5,8 +5,14 @@ if ($validate_fields['status']) {
     $table = 'information';
     $fields = [
         'title_store' => $_POST['title_store'],
+        'title1' => $_POST['title1'],
         'mobileHeather' => $_POST['mobileHeather'],
+        'mobileHeather2' => $_POST['mobileHeather2'],
+        'address' => $_POST['address'],
+        'working_hours' => $_POST['working_hours'],
         'text' => $_POST['text'],
+        'text2' => $_POST['text2'],
+        'text3' => $_POST['text3'],
     ];
     if (updateRecordToDatabase($table, $fields, POST('id'), 'id')) {
         responseJson([

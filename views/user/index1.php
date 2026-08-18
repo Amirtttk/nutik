@@ -1,22 +1,35 @@
+<?php
+$getInformation = getInformation();
+function colorText($text)
+{
+
+
+    return preg_replace(
+        '/\[(.*?)\]/',
+        '<span class="text-primary-600">$1</span>',
+        $text
+    );
+}
+
+
+function breakText($text)
+{
+    if (!$text) {
+        return '';
+    }
+
+    return str_replace('/', '<br>'.'<br>', $text);
+}
+?>
 <main>
     <!-- two section -->
     <div class="flex flex-col xl:flex-row gap-y-7 items-center mt-10 xl:w-10/12 mx-auto">
         <div class="xl:w-1/2">
             <div class="z-10 font-PeydaBold xl:font-PeydaBlack text-3xl lg:text-5xl text-center xl:text-right">
-                اعـتـبـار مـا از
-                <span class="text-primary-600">
-            اعـتـمـاد
-          </span>
-                شـمـاسـت
-            </div>
-            <div class="z-10 font-PeydaBold xl:font-PeydaBlack text-3xl lg:text-5xl mt-6 text-center xl:text-right">
-                بـاشــگــاه فــوتــبــال
-                <span class="text-primary-600">
-            نــوتــیـــک
-          </span>
+                <?= colorText(breakText($getInformation['title1'])) ?>
             </div>
             <div class="text-zinc-600 xl:text-xl mt-10 font-PeydaRegular text-center xl:text-right">
-                برخی از خدمات و تعرفه های باشگاه فوتبال نوتیک با بهره گیری از متد های روز و مربیان حرفه ای در خدمت بازیکنان موفق هستش.
+                <?=$getInformation['text3']?>
             </div>
             <div class="flex justify-center xl:justify-start mt-5">
                 <div class="relative">
@@ -93,8 +106,7 @@
                     <div class="bg-linear-90 from-primary-300 via-primary-400 to-primary-500 rounded-full size-4 xl:size-5 border-2 border-zinc-100"></div>
                     معرفی کوتاه:
                 </div>
-                باشگاه فوتبال نوتیک فقط جایی برای تمرین فوتبال نیست؛ جایی است که استعدادها کشف می‌شوند، شخصیت‌ها ساخته می‌شوند و قهرمانان آینده شکل می‌گیرند. با مربیان حرفه‌ای، برنامه‌های تمرینی اصولی و محیطی پویا، قدم‌به‌قدم در مسیر پیشرفت و موفقیت همراهت هستیم. اگر می‌خواهی مهارت‌هایت را ارتقا بدهی، اعتمادبه‌نفس بیشتری پیدا کنی و در زمین فوتبال بدرخشی، نوتیک بهترین نقطه شروع توست. امروز به خانواده نوتیک بپیوند و آینده فوتبالی خودت را بساز.
-            </div>
+                <?=$getInformation['text2']?>
             <div class="text-zinc-700 text-smm xl:text-sm font-yekanBakhRegular leading-7 text-justify mt-8">
                 <div class="text-s xl:text-lg font-yekanBakhExtraBold mb-2 flex items-center gap-x-2">
                     <div class="bg-linear-90 from-primary-300 via-primary-400 to-primary-500 rounded-full size-4 xl:size-5 border-2 border-zinc-100"></div>

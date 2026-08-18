@@ -99,16 +99,29 @@ function logout() {
 }
 function updateInformation(id) {
   let title_store = $('input[name="title_store"]').val(),
+      title1 = $('input[name="title1"]').val(),
       mobileHeather = $('input[name="mobileHeather"]').val(),
+      mobileHeather2 = $('input[name="mobileHeather2"]').val(),
+      address = $('input[name="address"]').val(),
+      working_hours = $('input[name="working_hours"]').val(),
+      text3 = $('input[name="text3"]').val(),
       text = $('textarea[name="text"]').val(),
+      text2 = $('textarea[name="text2"]').val(),
+
       getErrors = document.getElementById("getErrors");
   $.ajax({
     url: `${domain}requests/information/update.php`,
     type: "POST",
     data: {
       title_store,
+      title1,
+      address,
       mobileHeather,
+      mobileHeather2,
+      working_hours,
       text,
+      text2,
+      text3,
       id,
     },
     success: function (response) {
@@ -133,6 +146,7 @@ function updateInformation(id) {
 function update(id) {
   let title_store = $('input[name="title_store"]').val(),
       mobileHeather = $('input[name="mobileHeather"]').val(),
+      mobileHeather2 = $('input[name="mobileHeather2"]').val(),
       text = $('input[name="text"]').val(),
       getErrors = document.getElementById("getErrors");
   $.ajax({
@@ -141,6 +155,7 @@ function update(id) {
     data: {
       title_store,
       mobileHeather,
+      mobileHeather2,
       text,
       id,
     },

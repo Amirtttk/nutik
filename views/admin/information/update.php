@@ -42,6 +42,13 @@ $getInformation = getInformation();
                                         تصویر لوگو
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#kt_tab_pane_7_3">
+                                        <span class="nav-icon"><i class="fa fa-info"></i></span>
+                                        تصویر صفحه اصلی
+                                    </a>
+                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -61,18 +68,74 @@ $getInformation = getInformation();
                                                            placeholder="عنوان را وارد کنید" />
                                                 </div>
                                                 <div class="col-lg-4">
-                                                    <label>تلفن  : </label>
+                                                    <label>شماره واحد فروش  : </label>
                                                     <input name="mobileHeather" type="text" value="<?= $getInformation['mobileHeather'] ?>" class="form-control"
+                                                           data-v-message="تلفن مدیریت نمیتواند خالی بماند" required
+                                                           placeholder="تلفن مدیریت را وارد کنید" />
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>شماره واحد پشتیبانی  : </label>
+                                                    <input name="mobileHeather2" type="text" value="<?= $getInformation['mobileHeather2'] ?>" class="form-control"
+                                                           data-v-message="تلفن مدیریت نمیتواند خالی بماند" required
+                                                           placeholder="تلفن مدیریت را وارد کنید" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-lg-4">
+                                                    <label>عنوان کوتاه(صفحه اصلی):</label>
+                                                    <input name="title1" type="text" value="<?= $getInformation['title1'] ?>" class="form-control"
+                                                           data-v-message="معرفی کوتاه   نمیتواند خالی بماند" required
+                                                           placeholder="معرفی کوتاه  را وارد کنید" />
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>معرفی مربی(صفحه اصلی):</label>
+                                                    <input name="text3" type="text" value="<?= $getInformation['text3'] ?>" class="form-control"
+                                                           data-v-message="معرفی مربی   نمیتواند خالی بماند" required
+                                                           placeholder="معرفی مربی  را وارد کنید" />
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>شماره واحد فروش  : </label>
+                                                    <input name="mobileHeather" type="text" value="<?= $getInformation['mobileHeather'] ?>" class="form-control"
+                                                           data-v-message="تلفن مدیریت نمیتواند خالی بماند" required
+                                                           placeholder="تلفن مدیریت را وارد کنید" />
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>شماره واحد پشتیبانی  : </label>
+                                                    <input name="mobileHeather2" type="text" value="<?= $getInformation['mobileHeather2'] ?>" class="form-control"
                                                            data-v-message="تلفن مدیریت نمیتواند خالی بماند" required
                                                            placeholder="تلفن مدیریت را وارد کنید" />
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
+                                                <div class="col-lg-4">
+                                                    <label>آدرس  : </label>
+                                                    <input name="address" type="text" value="<?= $getInformation['address'] ?>" class="form-control"
+                                                           data-v-message="آدرس   نمیتواند خالی بماند" required
+                                                           placeholder="آدرس را وارد کنید" />
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>ساعت کاری : </label>
+                                                    <input name="working_hours" type="text"
+                                                           value="<?= $getInformation['working_hours'] ?>"
+                                                           class="form-control"
+                                                           data-v-message="ساعت کاری نمیتواند خالی بماند"
+                                                           required
+                                                           placeholder="مثال: ۸ صبح تا ۱۰ شب" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
                                                 <div class="col-lg-12">
-                                                    <label>توضیحات صفحه اصلی: </label>
+                                                    <label>درباره مجموعه(نمایش در همه صفحات): </label>
                                                     <textarea name="text" class="summernote" id="productDescription" rows="10">
                                                                 <?= $getInformation['text'] ?>
+                                                    </textarea>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <label>معرفی کوتاه(صفحه اصلی): </label>
+                                                    <textarea name="text2" class="summernote" id="productDescription" rows="10">
+                                                                <?= $getInformation['text2'] ?>
                                                     </textarea>
                                                 </div>
                                             </div>
@@ -90,6 +153,49 @@ $getInformation = getInformation();
                                     </form>
                                 </div>
                                 <div class="tab-pane fade" id="kt_tab_pane_7_2" role="tabpanel" aria-labelledby="kt_tab_pane_7_2">
+                                    <form id="myformImageBrand">
+                                        <div class="row p-3">
+                                            <label class="upload-file py-3 w-100">
+                                                <i class="fa fa-4x fa-camera"></i>
+                                                <input onchange="updateImageLogo(<?php echo '1' ?>)"
+                                                       class="form-control custom-file-input"
+                                                       name="image" id="inputFile" accept="png , jpg, jepg" type="file"/>
+                                                <span class="d-block mt-3" id="uploadedFileName">تصویر را انتخاب کنید.</span>
+                                            </label>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <button id="buttonImage" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#exampleModal">
+                                                        مشاهده فایل قبلی
+                                                    </button>
+                                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel1">مشاهده فایل قبلی</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form method="get">
+                                                                        <a style="" href="" target="_blank">
+                                                                            <i class="fa fa-download" style="font-size: 40px"> Download</i>                                            </a>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">فهمیدم</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tab-pane fade" id="kt_tab_pane_7_3" role="tabpanel" aria-labelledby="kt_tab_pane_7_3">
                                     <form id="myformImageBrand">
                                         <div class="row p-3">
                                             <label class="upload-file py-3 w-100">
