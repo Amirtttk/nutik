@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-300: oklch(64.69% 0.2056 13.29);
+  --color-primary-400: oklch(62.14% 0.2225 16.25);
+  --color-primary-500: oklch(60.56% 0.2337 19.25);
+  --color-primary-600: oklch(52.33% 0.2041 20.11);
+  --color-primary-700: oklch(51.21% 0.1961 19.17);
+
+  --color-primaryBlue-300: oklch(70% 0.14 261);
+  --color-primaryBlue-400: oklch(55% 0.16 261);
+  --color-primaryBlue-500: oklch(34% 0.127 261);
+  --color-primaryBlue-600: oklch(28% 0.11 261);
+  --color-primaryBlue-700: oklch(20% 0.085 261);
+
+  --color-primaryYellow-300: oklch(88% 0.12 50);
+  --color-primaryYellow-400: oklch(82% 0.15 50);
+  --color-primaryYellow-500: oklch(75% 0.18 50);
+  --color-primaryYellow-600: oklch(60% 0.16 50);
+  --color-primaryYellow-700: oklch(48% 0.13 50);
+  --color-normalZinc: #f7f8fa;
+  --font-display:             "yekanBakhRegular";
+  --font-yekanBakhLight:      "yekanBakhLight";
+  --font-yekanBakhRegular:    "yekanBakhRegular";
+  --font-yekanBakhSemiBold:   "yekanBakhSemiBold";
+  --font-yekanBakhBold:       "yekanBakhBold";
+  --font-yekanBakhExtraBold:  "yekanBakhExtraBold";
+  --font-yekanBakhBlack:      "yekanBakhBlack";
+  --font-yekanBakhExtraBlack: "yekanBakhExtraBlack";
+  --shadow-custom: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  --text-smm: 0.815rem;
+  --text-xss: 0.625rem;
+
+
+}

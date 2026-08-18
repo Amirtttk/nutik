@@ -1,0 +1,20 @@
+[06-Aug-2025 19:24:32 Europe/London] PHP Fatal error:  Uncaught Error: Call to undefined function getTicketById() in /home/fitwhe/public_html/fitwheynew.fitwhey.ir/requests/tickets/addTicketDetails.php:66
+Stack trace:
+#0 {main}
+  thrown in /home/fitwhe/public_html/fitwheynew.fitwhey.ir/requests/tickets/addTicketDetails.php on line 66
+[06-Aug-2025 19:24:37 Europe/London] PHP Fatal error:  Uncaught Error: Call to undefined function getTicketById() in /home/fitwhe/public_html/fitwheynew.fitwhey.ir/requests/tickets/addTicketDetails.php:66
+Stack trace:
+#0 {main}
+  thrown in /home/fitwhe/public_html/fitwheynew.fitwhey.ir/requests/tickets/addTicketDetails.php on line 66
+[06-Aug-2025 19:29:09 Europe/London] PHP Warning:  Undefined array key "user_id" in /home/fitwhe/public_html/fitwheynew.fitwhey.ir/requests/tickets/addTicketDetails.php on line 68
+[06-Aug-2025 19:29:38 Europe/London] PHP Warning:  Undefined array key "userID " in /home/fitwhe/public_html/fitwheynew.fitwhey.ir/requests/tickets/addTicketDetails.php on line 68
+[06-Aug-2025 19:30:35 Europe/London] PHP Warning:  Undefined array key "userID " in /home/fitwhe/public_html/fitwheynew.fitwhey.ir/requests/tickets/addTicketDetails.php on line 67
+[06-Aug-2025 19:30:58 Europe/London] PHP Warning:  Undefined array key "mobile" in /home/fitwhe/public_html/fitwheynew.fitwhey.ir/requests/tickets/addTicketDetails.php on line 70
+[25-Aug-2025 19:36:55 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function validator() in /home/omiid010/domains/panel.fitdietclub.com/public_html/requests/tickets/createNewTicket.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/omiid010/domains/panel.fitdietclub.com/public_html/requests/tickets/createNewTicket.php on line 3
+[25-Aug-2025 19:36:55 Asia/Tehran] PHP Fatal error:  Uncaught Error: Call to undefined function validator() in /home/omiid010/domains/panel.fitdietclub.com/public_html/requests/tickets/createNewTicket.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/omiid010/domains/panel.fitdietclub.com/public_html/requests/tickets/createNewTicket.php on line 3

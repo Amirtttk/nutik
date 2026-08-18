@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /
+
+# درخواست‌های requests/* از طریق index.php (تا core با __DIR__ لود شود)
+RewriteRule ^requests/(.*)$ index.php?__request=requests/$1 [QSA,L]
+
+# بقیه درخواست‌ها به index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]

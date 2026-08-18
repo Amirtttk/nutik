@@ -1,0 +1,8 @@
+[22-Feb-2026 12:49:21 Asia/Tehran] PHP Warning:  Undefined variable $price in /home/ieslndgr/public_html/views/admin/products/update.php on line 815
+[22-Feb-2026 12:49:21 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in /home/ieslndgr/public_html/views/admin/products/update.php on line 815
+[22-Feb-2026 12:49:36 Asia/Tehran] PHP Warning:  Undefined variable $price in /home/ieslndgr/public_html/views/admin/products/update.php on line 815
+[22-Feb-2026 12:49:36 Asia/Tehran] PHP Warning:  Trying to access array offset on value of type null in /home/ieslndgr/public_html/views/admin/products/update.php on line 815
+[22-Feb-2026 13:10:58 Asia/Tehran] PHP Warning:  Undefined variable $thumbnail21 in /home/ieslndgr/public_html/views/user/index1.php on line 432
+[22-Feb-2026 16:15:14 Asia/Tehran] PHP Warning:  Undefined variable $thumbnail21 in /home/ieslndgr/public_html/views/user/index1.php on line 432
+[22-Feb-2026 16:15:14 Asia/Tehran] PHP Warning:  Undefined variable $thumbnail21 in /home/ieslndgr/public_html/views/user/index1.php on line 432
+[22-Feb-2026 16:15:14 Asia/Tehran] PHP Warning:  Undefined variable $thumbnail21 in /home/ieslndgr/public_html/views/user/index1.php on line 432
