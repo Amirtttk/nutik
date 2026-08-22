@@ -1,4 +1,9 @@
- <main class="my-4 xl:my-10">
+<?php
+
+$getInformation = getInformation();
+
+?>
+<main class="my-4 xl:my-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-8 mx-2 md:mx-32 mb-8 md:my-12 border border-zinc-200 rounded-2xl p-2 md:p-8 bg-white">
       <div class="space-y-4 md:space-y-6 order-2 lg:order-1">
         <div class="w-full text-zinc-700 text-lg lg:text-2xl pb-6 pr-2 font-PeydaBold lg:font-PeydaBlack">
@@ -42,23 +47,23 @@
                آدرس:
               </div>
               <a href="#" class="text-zinc-700 text-sm text-left">
-                سبزوار - خیابان اصلی - کوچه اصلی
+                <?=$getInformation['address']?>
               </a>
             </li>
             <li class="flex gap-x-5 justify-between mb-4">
               <div class="text-zinc-700 text-sm font-yekanBakhBold">
                 واحد فروش:
               </div>
-              <a href="tel:09123456789" class="text-zinc-700 text-sm">
-                09123456789
+              <a href="tel:<?=$getInformation['mobileHeather']?>" class="text-zinc-700 text-sm">
+                  <?=$getInformation['mobileHeather']?>
               </a>
             </li>
             <li class="flex gap-x-5 justify-between mb-4">
               <div class="text-zinc-700 text-sm font-yekanBakhBold">
                واحد پشتیبانی:
               </div>
-              <a href="tel:09123456789" class="text-zinc-700 text-sm">
-                09123456789
+              <a href="tel:<?=$getInformation['mobileHeather2']?>" class="text-zinc-700 text-sm">
+                  <?=$getInformation['mobileHeather2']?>
               </a>
             </li>
             <li class="flex gap-x-5 justify-between">
@@ -66,7 +71,7 @@
                 ساعات کاری:
               </div>
               <div class="text-zinc-700 text-sm">
-                8 تا 23
+                  <?=$getInformation['working_hours']?>
               </div>
             </li>
           </ul>
