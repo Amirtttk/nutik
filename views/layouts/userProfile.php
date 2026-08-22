@@ -1,186 +1,131 @@
 <?php
 $getInfoUser = getInfoUser($_SESSION['user_sending']);
-$getInformation = getInformation();
 ?>
-<!DOCTYPE html>
-<html lang="fa" dir="rtl" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../../assets/user/image/fav.png">
-
-    <link rel="stylesheet" href="../../assets/user/css/main.css">
-
-    <title> <?= $_SESSION['page']['title'] ?></title>
-    <?= $_SESSION['page']['link'] ?>
-    <style>
-        @layer theme {
-            :root, :host {
-                --color-primary-600:<?= $getInformation['color'] ?> ;
-                --color-primary-500:<?= $getInformation['color2'] ?> ;
-                --color-primary-400:<?= $getInformation['color3'] ?> ;
-            }
-        }
-    </style>
-</head>
-
-<body class="max-w-[1700px] mx-auto bg-zinc-100 flex flex-col min-h-screen relative">
-
-<!-- bg blur mobile -->
-<div id="overlay" class="fixed z-10 inset-0 bg-black/35 hidden transition-opacity duration-300"></div>
-<!-- Sidebar -->
-<div id="mobile-menu" class="z-20 fixed top-0 right-0 w-10/12 md:w-6/12 lg:w-[17%] h-screen bg-white shadow-lg transform translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
-    <div class="p-5 flex flex-col gap-y-3 justify-center items-center">
-        <!-- logo -->
-        <div class="flex justify-center">
-            <a href="/">
-                <img src="../../public/images/logo/<?= $getInformation['image_name']; ?>" class="max-w-24 md:max-w-28 h-fit" alt="">
+<div class="lg:w-3/12 bg-white shadow-custom lg:rounded-2xl p-4 h-fit order-2 lg:order-1">
+    <div>
+        <div class="flex justify-between items-center">
+            <div class="text-xs lg:text-sm text-zinc-600 flex flex-col gap-y-1">
+                امیررضا کریمی
+            </div>
+            <a href="#" class="group text-xs lg:text-sm font-yekanBakhRegular text-primary-500 hover:text-primary-300 cursor-pointer flex gap-x-2 pt-1">
+                <svg class="fill-primary-500" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#000000" viewBox="0 0 256 256"><path d="M227.32,73.37,182.63,28.69a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H216a8,8,0,0,0,0-16H115.32l112-112A16,16,0,0,0,227.32,73.37ZM92.69,208H48V163.31l88-88L180.69,120ZM192,108.69,147.32,64l24-24L216,84.69Z"></path></svg>
             </a>
         </div>
     </div>
-    <ul class="p-5 space-y-1 text-sm text-zinc-800 overflow-y-auto pb-48">
-        <li>
-            <a href="/dashboard" class="py-3 px-4 hover:bg-gradient-to-l hover:from-zinc-100 hover:to-transparent rounded-lg flex gap-x-2">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path class="fill-gray-700" d="M11.25 18C11.25 18.1989 11.329 18.3897 11.4697 18.5303C11.6103 18.671 11.8011 18.75 12 18.75C12.1989 18.75 12.3897 18.671 12.5303 18.5303C12.671 18.3897 12.75 18.1989 12.75 18V15C12.75 14.8011 12.671 14.6103 12.5303 14.4697C12.3897 14.329 12.1989 14.25 12 14.25C11.8011 14.25 11.6103 14.329 11.4697 14.4697C11.329 14.6103 11.25 14.8011 11.25 15V18Z" fill=""/>
-                    <path class="fill-gray-700" fill-rule="evenodd" clip-rule="evenodd" d="M12 1.25C11.292 1.25 10.649 1.453 9.95 1.792C9.276 2.12 8.496 2.604 7.523 3.208L5.456 4.491C4.536 5.063 3.797 5.521 3.229 5.956C2.64 6.406 2.188 6.866 1.861 7.463C1.535 8.058 1.389 8.692 1.318 9.441C1.25 10.166 1.25 11.054 1.25 12.167V13.78C1.25 15.684 1.25 17.187 1.403 18.362C1.559 19.567 1.889 20.54 2.633 21.309C3.38 22.082 4.33 22.428 5.508 22.591C6.648 22.75 8.106 22.75 9.942 22.75H14.058C15.894 22.75 17.352 22.75 18.492 22.591C19.669 22.428 20.62 22.082 21.368 21.309C22.111 20.54 22.441 19.567 22.598 18.362C22.75 17.187 22.75 15.684 22.75 13.78V12.167C22.75 11.054 22.75 10.167 22.682 9.441C22.612 8.691 22.465 8.058 22.139 7.463C21.812 6.866 21.359 6.407 20.771 5.956C20.203 5.52 19.465 5.063 18.544 4.491L16.477 3.208C15.504 2.604 14.724 2.12 14.049 1.792C13.352 1.452 12.709 1.25 12 1.25ZM8.28 4.504C9.295 3.874 10.01 3.432 10.607 3.141C11.188 2.858 11.6 2.75 12 2.75C12.4 2.75 12.812 2.858 13.393 3.141C13.991 3.431 14.705 3.874 15.72 4.504L17.72 5.745C18.681 6.342 19.356 6.761 19.86 7.147C20.349 7.522 20.63 7.831 20.823 8.183C21.016 8.536 21.129 8.949 21.188 9.581C21.249 10.229 21.25 11.046 21.25 12.204V13.725C21.25 15.695 21.248 17.101 21.11 18.168C20.974 19.216 20.717 19.824 20.29 20.267C19.865 20.706 19.287 20.967 18.286 21.106C17.26 21.248 15.907 21.25 14 21.25H10C8.092 21.25 6.74 21.248 5.714 21.106C4.713 20.966 4.135 20.706 3.711 20.266C3.283 19.824 3.026 19.216 2.891 18.168C2.751 17.101 2.75 15.696 2.75 13.725V12.204C2.75 11.046 2.75 10.229 2.812 9.581C2.871 8.949 2.984 8.536 3.177 8.183C3.37 7.831 3.651 7.522 4.141 7.147C4.644 6.761 5.319 6.342 6.28 5.745L8.28 4.504Z" fill=""/>
+    <div class="flex justify-between items-start pt-6">
+        <div class="text-xs lg:text-sm text-zinc-600 flex flex-col gap-y-1">
+            کیف پول
+            <a href="" class="text-xs py-1 px-1 rounded-lg  text-primary-500 w-fit flex items-center gap-x-1">
+                افزایش موجودی
+                <svg class="fill-primary-500 group-hover:fill-primary-300" xmlns="http://www.w3.org/2000/svg" fill="#000000" width="16" height="16" viewBox="0 0 56 56"><path d="M 47.7928 46.4453 C 49.0352 46.4453 49.5973 45.6484 49.8085 44.6875 C 49.9492 43.9844 49.9962 42.8125 49.9962 41.4531 C 49.9962 30.1094 45.4725 25.2344 34.3397 25.2344 L 17.9803 25.2344 L 12.2382 25.5625 L 20.1132 18.3437 L 25.3163 13.0469 C 25.6913 12.6719 25.9022 12.1328 25.9022 11.5703 C 25.9022 10.3984 24.9882 9.5547 23.8397 9.5547 C 23.2772 9.5547 22.7850 9.7422 22.246 10.2578 L 6.7303 25.7500 C 6.2616 26.1953 6.0038 26.7578 6.0038 27.3203 C 6.0038 27.9062 6.2616 28.4453 6.7303 28.9141 L 22.3163 44.4531 C 22.7850 44.8984 23.2772 45.1094 23.8397 45.1094 C 24.9882 45.1094 25.9022 44.2656 25.9022 43.0937 C 25.9022 42.5312 25.6913 41.9687 25.3163 41.5937 L 20.1132 36.2969 L 12.2147 29.0781 L 17.9803 29.4297 L 34.1288 29.4297 C 42.7538 29.4297 45.7538 32.9688 45.7538 41.6641 C 45.7538 42.7656 45.7069 43.5391 45.7069 44.3594 C 45.7069 45.6016 46.5741 46.4453 47.7928 46.4453 Z"></path></svg>
+            </a>
+        </div>
+        <div class="text-xs lg:text-sm text-zinc-600 flex flex-col gap-y-1">
+            3,450,000 تومان
+        </div>
+    </div>
+    <hr class="text-zinc-200 my-5">
+    <ul class="flex flex-col gap-y-1">
+        <li class="group">
+            <a href="#" class="text-zinc-600 hover:text-primary-500 text-s flex gap-x-2 p-2 rounded-lg group-hover:bg-zinc-100">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="group-hover:stroke-primary-500" d="M16 17H8M18.364 7.36396C19.5183 8.51833 20.0955 9.09551 20.455 9.80112C20.5739 10.0345 20.6743 10.2769 20.7553 10.526C21 11.2791 21 12.0954 21 13.7279V15.6C21 17.8498 21 18.9748 20.4271 19.7634C20.242 20.018 20.018 20.242 19.7634 20.4271C18.9748 21 17.8498 21 15.6 21H8.4C6.15016 21 5.02524 21 4.23664 20.4271C3.98196 20.242 3.75799 20.018 3.57295 19.7634C3 18.9748 3 17.8498 3 15.6V13.7279C3 12.0954 3 11.2791 3.24472 10.526C3.32566 10.2769 3.42605 10.0345 3.54497 9.80112C3.90449 9.09551 4.48167 8.51833 5.63604 7.36396C8.2875 4.7125 9.61323 3.38677 11.2178 3.13263C11.736 3.05055 12.264 3.05055 12.7822 3.13263C14.3868 3.38677 15.7125 4.7125 18.364 7.36396Z" stroke="#52525C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
-                صفحه اصلی
+                خانه
             </a>
         </li>
-        <li>
-            <a href="/orders" class="py-3 px-4 hover:bg-gradient-to-l hover:from-zinc-100 hover:to-transparent rounded-lg flex gap-x-2">
-                <svg class="fill-gray-700" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M104,216a16,16,0,1,1-16-16A16,16,0,0,1,104,216Zm88-16a16,16,0,1,0,16,16A16,16,0,0,0,192,200ZM239.71,74.14l-25.64,92.28A24.06,24.06,0,0,1,191,184H92.16A24.06,24.06,0,0,1,69,166.42L33.92,40H16a8,8,0,0,1,0-16H40a8,8,0,0,1,7.71,5.86L57.19,64H232a8,8,0,0,1,7.71,10.14ZM221.47,80H61.64l22.81,82.14A8,8,0,0,0,92.16,168H191a8,8,0,0,0,7.71-5.86Z"></path></svg>
-                سفارشات
+        <li class="group">
+            <a href="#" class="text-zinc-600 hover:text-primary-500 text-s flex gap-x-2 p-2 rounded-lg group-hover:bg-zinc-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" class="rtl-enabled">
+                    <path class="fill-none stroke-zinc-600 group-hover:stroke-primary-500" d="M15.5777 3.38197L17.5777 4.43152C19.7294 5.56066 20.8052 6.12523 21.4026 7.13974C22 8.15425 22 9.41667 22 11.9415V12.0585C22 14.5833 22 15.8458 21.4026 16.8603C20.8052 17.8748 19.7294 18.4393 17.5777 19.5685L15.5777 20.618C13.8221 21.5393 12.9443 22 12 22C11.0557 22 10.1779 21.5393 8.42229 20.618L6.42229 19.5685C4.27063 18.4393 3.19479 17.8748 2.5974 16.8603C2 15.8458 2 14.5833 2 12.0585V11.9415C2 9.41667 2 8.15425 2.5974 7.13974C3.19479 6.12523 4.27063 5.56066 6.42229 4.43152L8.42229 3.38197C10.1779 2.46066 11.0557 2 12 2C12.9443 2 13.8221 2.46066 15.5777 3.38197Z" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path>
+                    <path class="fill-none stroke-zinc-600 group-hover:stroke-primary-500" d="M21 7.5L17 9.5M12 12L3 7.5M12 12V21.5M12 12C12 12 14.7426 10.6287 16.5 9.75C16.6953 9.65237 17 9.5 17 9.5M17 9.5V13M17 9.5L7.5 4.5" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path>
+                </svg>
+                برنامه های من
             </a>
         </li>
-        <li>
-            <a href="/favorites" class="py-3 px-4 hover:bg-gradient-to-l hover:from-zinc-100 hover:to-transparent rounded-lg flex gap-x-2">
-                <svg class="fill-gray-700" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z"></path></svg>
-                علاقه مندی ها
+        <li class="group">
+            <a href="#" class="text-zinc-600 hover:text-primary-500 text-s flex gap-x-2 p-2 rounded-lg group-hover:bg-zinc-100">
+                <svg class="fill-zinc-600 group-hover:fill-primary-500" xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="#000000" viewBox="0 0 256 256"><path d="M216,88.8V72a40,40,0,0,0-40-40H80A40,40,0,0,0,40,72V88.8a40,40,0,0,0,0,78.4V200a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V167.2a40,40,0,0,0,0-78.4ZM80,48h96a24,24,0,0,1,24,24V88.8A40.07,40.07,0,0,0,168,128H88A40.07,40.07,0,0,0,56,88.8V72A24,24,0,0,1,80,48ZM208.39,152H208a8,8,0,0,0-8,8v40H56V160a8,8,0,0,0-8-8h-.39A24,24,0,1,1,72,128v40a8,8,0,0,0,16,0V144h80v24a8,8,0,0,0,16,0V128a24,24,0,1,1,24.39,24Z"></path></svg>
+                نوبت های رزرو شده
             </a>
         </li>
-        <li>
-            <a href="/ticket" class="py-3 px-4 hover:bg-gradient-to-l hover:from-zinc-100 hover:to-transparent rounded-lg flex gap-x-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M232.07,186.76a80,80,0,0,0-62.5-114.17A80,80,0,1,0,23.93,138.76l-7.27,24.71a16,16,0,0,0,19.87,19.87l24.71-7.27a80.39,80.39,0,0,0,25.18,7.35,80,80,0,0,0,108.34,40.65l24.71,7.27a16,16,0,0,0,19.87-19.86ZM62,159.5a8.28,8.28,0,0,0-2.26.32L32,168l8.17-27.76a8,8,0,0,0-.63-6,64,64,0,1,1,26.26,26.26A8,8,0,0,0,62,159.5Zm153.79,28.73L224,216l-27.76-8.17a8,8,0,0,0-6,.63,64.05,64.05,0,0,1-85.87-24.88A79.93,79.93,0,0,0,174.7,89.71a64,64,0,0,1,41.75,92.48A8,8,0,0,0,215.82,188.23Z"></path></svg>
+        <li class="group">
+            <a href="#" class="text-zinc-600 hover:text-primary-500 text-s flex gap-x-2 p-2 rounded-lg group-hover:bg-zinc-100">
+                <svg width="21" height="21" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="fill-zinc-600 group-hover:fill-primary-500" fill-rule="evenodd" clip-rule="evenodd" d="M2.27631 1C2.27631 0.585786 2.61209 0.25 3.02631 0.25H4.7082C5.83902 0.25 6.79416 1.08931 6.93953 2.21075L7.00943 2.75H22.0303C23.0663 2.75 23.8755 3.64496 23.7715 4.6757L22.9995 12.3263C22.8319 13.9864 21.4345 15.25 19.7659 15.25H7.77631C7.22402 15.25 6.77631 15.6977 6.77631 16.25C6.77631 16.8023 7.22402 17.25 7.77631 17.25H22.0263C22.4405 17.25 22.7763 17.5858 22.7763 18C22.7763 18.4142 22.4405 18.75 22.0263 18.75H21.6483C21.7312 18.9846 21.7763 19.237 21.7763 19.5C21.7763 20.7426 20.7689 21.75 19.5263 21.75C18.2837 21.75 17.2763 20.7426 17.2763 19.5C17.2763 19.237 17.3214 18.9846 17.4043 18.75H11.6483C11.7312 18.9846 11.7763 19.237 11.7763 19.5C11.7763 20.7426 10.7689 21.75 9.52631 21.75C8.28367 21.75 7.27631 20.7426 7.27631 19.5C7.27631 19.2272 7.32484 18.9658 7.41375 18.7239C6.20485 18.5483 5.27631 17.5076 5.27631 16.25C5.27631 15.0932 6.06201 14.1199 7.12889 13.8346C6.96436 13.5384 6.85248 13.2075 6.8066 12.8535L5.45198 2.40358C5.40352 2.02977 5.08514 1.75 4.7082 1.75H3.02631C2.61209 1.75 2.27631 1.41421 2.27631 1ZM18.7763 19.5C18.7763 19.0858 19.1121 18.75 19.5263 18.75C19.9405 18.75 20.2763 19.0858 20.2763 19.5C20.2763 19.9142 19.9405 20.25 19.5263 20.25C19.1121 20.25 18.7763 19.9142 18.7763 19.5ZM9.52631 18.75C9.11209 18.75 8.77631 19.0858 8.77631 19.5C8.77631 19.9142 9.11209 20.25 9.52631 20.25C9.94052 20.25 10.2763 19.9142 10.2763 19.5C10.2763 19.0858 9.94052 18.75 9.52631 18.75ZM19.7659 13.75H9.53378C8.90555 13.75 8.37491 13.2837 8.29415 12.6607L7.20388 4.25H22.0303C22.1783 4.25 22.2939 4.37785 22.2791 4.5251L21.507 12.1757C21.4168 13.0696 20.6643 13.75 19.7659 13.75Z" fill="#43454D"></path>
+                    <path class="fill-zinc-600 group-hover:fill-primary-500" d="M5.49213 12.1641C5.36509 11.91 5.10531 11.749 4.82123 11.749H3.02631C2.87716 11.749 2.73259 11.7935 2.61029 11.875L2.49604 11.9688L2.49506 11.9697C2.20217 12.2626 2.20217 12.7374 2.49506 13.0303L2.49604 13.0312C2.63669 13.1719 2.8274 13.251 3.02631 13.251H4.82221C5.08202 13.251 5.32322 13.1164 5.4599 12.8955C5.57945 12.7021 5.60379 12.4665 5.53022 12.2549L5.49311 12.166L5.49213 12.1641Z" fill="#43454D"></path>
+                    <path class="fill-zinc-600 group-hover:fill-primary-500" d="M5.09467 8.99902C5.09467 8.58481 4.75888 8.24902 4.34467 8.24902H2.02631C1.87716 8.24902 1.73259 8.29347 1.61029 8.375L1.49604 8.46875L1.49506 8.46973C1.20217 8.76262 1.20217 9.23738 1.49506 9.53027L1.49604 9.53125L1.61029 9.625C1.73259 9.70653 1.87716 9.75098 2.02631 9.75098H4.34467C4.75888 9.75098 5.09467 9.41519 5.09467 9.00098V8.99902Z" fill="#43454D"></path>
+                    <path class="fill-zinc-600 group-hover:fill-primary-500" d="M3.94428 4.75293L3.86713 4.74902H1.02631C0.877156 4.74902 0.732594 4.79347 0.610295 4.875L0.496037 4.96875L0.495061 4.96973C0.202167 5.26262 0.202167 5.73738 0.495061 6.03027L0.496037 6.03125L0.610295 6.125C0.732594 6.20653 0.877156 6.25098 1.02631 6.25098H3.86713C4.2553 6.25098 4.5746 5.95609 4.61322 5.57812L4.61713 5.50098V5.49902C4.61713 5.11086 4.32225 4.79155 3.94428 4.75293Z" fill="#43454D"></path>
+                </svg>
+                سفارش ها
+            </a>
+        </li>
+        <li class="group">
+            <a href="./ticket" class="text-zinc-600 hover:text-primary-500 text-s flex gap-x-2 p-2 rounded-lg group-hover:bg-zinc-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="#000000" viewBox="0 0 256 256"><path class="fill-zinc-600 group-hover:fill-primary-500" d="M232.07,186.76a80,80,0,0,0-62.5-114.17A80,80,0,1,0,23.93,138.76l-7.27,24.71a16,16,0,0,0,19.87,19.87l24.71-7.27a80.39,80.39,0,0,0,25.18,7.35,80,80,0,0,0,108.34,40.65l24.71,7.27a16,16,0,0,0,19.87-19.86ZM62,159.5a8.28,8.28,0,0,0-2.26.32L32,168l8.17-27.76a8,8,0,0,0-.63-6,64,64,0,1,1,26.26,26.26A8,8,0,0,0,62,159.5Zm153.79,28.73L224,216l-27.76-8.17a8,8,0,0,0-6,.63,64.05,64.05,0,0,1-85.87-24.88A79.93,79.93,0,0,0,174.7,89.71a64,64,0,0,1,41.75,92.48A8,8,0,0,0,215.82,188.23Z"></path></svg>
                 تیکت ها
             </a>
         </li>
-        <li>
-            <a href="/address" class="py-3 px-4 hover:bg-gradient-to-l hover:from-zinc-100 hover:to-transparent rounded-lg flex gap-x-2">
-                <svg class="fill-gray-700" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M112,80a16,16,0,1,1,16,16A16,16,0,0,1,112,80ZM64,80a64,64,0,0,1,128,0c0,59.95-57.58,93.54-60,94.95a8,8,0,0,1-7.94,0C121.58,173.54,64,140,64,80Zm16,0c0,42.2,35.84,70.21,48,78.5,12.15-8.28,48-36.3,48-78.5a48,48,0,0,0-96,0Zm122.77,67.63a8,8,0,0,0-5.54,15C213.74,168.74,224,176.92,224,184c0,13.36-36.52,32-96,32s-96-18.64-96-32c0-7.08,10.26-15.26,26.77-21.36a8,8,0,0,0-5.54-15C29.22,156.49,16,169.41,16,184c0,31.18,57.71,48,112,48s112-16.82,112-48C240,169.41,226.78,156.49,202.77,147.63Z"></path></svg>
+        <li class="group">
+            <a href="#" class="text-zinc-600 hover:text-primary-500 text-s flex gap-x-2 p-2 rounded-lg group-hover:bg-zinc-100">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="group-hover:stroke-primary-500" d="M20.894 9.44503C19.8474 15.4754 11.9949 20.5 11.9949 20.5C11.9949 20.5 4.08463 15.4753 3.09582 9.44536C2.10702 3.41545 9.02855 1.40524 11.9949 6.0795C14.9613 1.40515 21.9407 3.41463 20.894 9.44503Z" stroke="#52525C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                مورد علاقه ها
+            </a>
+        </li>
+        <li class="group">
+            <a href="#" class="text-zinc-600 hover:text-primary-500 text-s flex gap-x-2 p-2 rounded-lg group-hover:bg-zinc-100">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="group-hover:fill-primary-500" d="M7.5 9.5C7.5 10.0523 7.05228 10.5 6.5 10.5C5.94772 10.5 5.5 10.0523 5.5 9.5C5.5 8.94772 5.94772 8.5 6.5 8.5C7.05228 8.5 7.5 8.94772 7.5 9.5Z" fill="#52525C"></path>
+                    <path class="group-hover:fill-primary-500" d="M11.5 9.5C11.5 10.0523 11.0523 10.5 10.5 10.5C9.94772 10.5 9.5 10.0523 9.5 9.5C9.5 8.94772 9.94772 8.5 10.5 8.5C11.0523 8.5 11.5 8.94772 11.5 9.5Z" fill="#52525C"></path>
+                    <path class="group-hover:fill-primary-500" d="M15.5 9.5C15.5 10.0523 15.0523 10.5 14.5 10.5C13.9477 10.5 13.5 10.0523 13.5 9.5C13.5 8.94772 13.9477 8.5 14.5 8.5C15.0523 8.5 15.5 8.94772 15.5 9.5Z" fill="#52525C"></path>
+                    <path class="group-hover:stroke-primary-500" d="M10.7505 14.5013C10.7505 16.1581 12.0936 17.5013 13.7505 17.5013H16.0005L19.0005 20.0013V17.5013H19.01C20.1093 17.5013 21.0005 16.6101 21.0005 15.5108V11.2513C21.0005 9.59444 19.6573 8.25129 18.0005 8.25129M6.5 14.5L5.5 17L10.5 14.5H12.75C14.8567 14.5 15.91 14.5 16.6667 13.9944C16.9943 13.7755 17.2755 13.4943 17.4944 13.1667C18 12.41 18 11.3567 18 9.25C18 7.14331 18 6.08996 17.4944 5.33329C17.2755 5.00572 16.9943 4.72447 16.6667 4.50559C15.91 4 14.8567 4 12.75 4H8.25C6.14331 4 5.08996 4 4.33329 4.50559C4.00572 4.72447 3.72447 5.00572 3.50559 5.33329C3 6.08996 3 7.14331 3 9.25V11.5C3 13.1569 4.34315 14.5 6 14.5H6.5Z" stroke="#52525C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                نظرات من
+            </a>
+        </li>
+        <li class="group">
+            <a href="#" class="text-zinc-600 hover:text-primary-500 text-s flex gap-x-2 p-2 rounded-lg group-hover:bg-zinc-100">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="group-hover:stroke-primary-500" d="M12.0001 3C7.02956 3 2.99997 7 4.00012 12C4.66541 15.3259 7.98533 18.4306 10.1339 20.1367C10.8361 20.6944 11.1873 20.9732 11.7325 21.0468C11.8836 21.0672 12.1166 21.0672 12.2678 21.0468C12.813 20.9732 13.1641 20.6944 13.8664 20.1368C16.015 18.4306 19.335 15.3259 20.0001 12C21 7 16.9707 3 12.0001 3Z" stroke="#52525C" stroke-width="1.5" stroke-linejoin="round"></path>
+                    <path class="group-hover:stroke-primary-500" d="M15 11.15C15 12.8069 13.6569 14.15 12 14.15C10.3431 14.15 9 12.8069 9 11.15C9 9.49315 10.3431 8.15 12 8.15C13.6569 8.15 15 9.49315 15 11.15Z" stroke="#52525C" stroke-width="1.5" stroke-linejoin="round"></path>
+                </svg>
                 آدرس ها
             </a>
         </li>
-        <li>
-            <a href="/dashboardMessages" class="py-3 px-4 hover:bg-gradient-to-l hover:from-zinc-100 hover:to-transparent rounded-lg flex justify-between">
-                <div class="flex gap-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M227.33,91l-96-64a6,6,0,0,0-6.66,0l-96,64A6,6,0,0,0,26,96V200a14,14,0,0,0,14,14H216a14,14,0,0,0,14-14V96A6,6,0,0,0,227.33,91ZM100.18,152,38,195.9V107.65Zm12.27,6h31.1l62.29,44H50.16Zm43.37-6L218,107.65V195.9ZM128,39.21l85.43,57L143.53,146H112.47L42.57,96.17Z"></path></svg>
-                    پیغام ها
-                </div>
+        <li class="group">
+            <a href="#" class="text-zinc-600 hover:text-primary-500 text-s flex gap-x-2 p-2 rounded-lg group-hover:bg-zinc-100">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="group-hover:stroke-primary-500" d="M10.0042 17.7195C9.63874 18.7034 10.3665 19.75 11.416 19.75H18.0397C18.5872 19.75 18.8609 19.75 19.0645 19.7162C20.4518 19.4855 21.376 18.1564 21.1091 16.7756C21.07 16.573 20.9747 16.3164 20.784 15.8031C20.6253 15.3759 20.546 15.1623 20.4537 14.9759C19.8451 13.7459 18.6484 12.9139 17.2836 12.7716C17.0767 12.75 16.8488 12.75 16.3931 12.75H14.6075C14.3945 12.75 14.288 12.75 14.1821 12.7556C13.9157 12.7697 13.6513 12.8105 13.393 12.8773C13.2904 12.9038 13.1889 12.9358 12.9857 13M8.33008 8.25C7.22551 8.25 6.33008 7.35457 6.33008 6.25C6.33008 5.14543 7.22551 4.25 8.33008 4.25C9.43465 4.25 10.3301 5.14543 10.3301 6.25C10.3301 7.35457 9.43465 8.25 8.33008 8.25ZM15.8301 10.25C14.7255 10.25 13.8301 9.35457 13.8301 8.25C13.8301 7.14543 14.7255 6.25 15.8301 6.25C16.9346 6.25 17.8301 7.14543 17.8301 8.25C17.8301 9.35457 16.9346 10.25 15.8301 10.25ZM5.96032 17.75H10.5397C11.0872 17.75 11.3609 17.75 11.5645 17.7162C12.9518 17.4855 13.876 16.1564 13.6091 14.7756C13.57 14.573 13.4747 14.3164 13.284 13.8031C13.1253 13.3759 13.046 13.1623 12.9537 12.9759C12.3451 11.7459 11.1484 10.9139 9.78358 10.7716C9.5767 10.75 9.34883 10.75 8.89307 10.75H7.60693C7.15117 10.75 6.9233 10.75 6.71642 10.7716C5.35155 10.9139 4.15492 11.7459 3.54627 12.9759C3.45401 13.1623 3.37467 13.3759 3.21598 13.8031C3.02535 14.3164 2.93003 14.573 2.89087 14.7756C2.62401 16.1564 3.54819 17.4855 4.9355 17.7162C5.13908 17.75 5.41283 17.75 5.96032 17.75Z" stroke="#52525C" stroke-width="1.5" stroke-linejoin="round"></path>
+                </svg>
+                دعوت از دوستان
             </a>
         </li>
-        <li>
-            <a href="/details" class="py-3 px-4 hover:bg-gradient-to-l hover:from-zinc-100 hover:to-transparent rounded-lg flex gap-x-2">
-                <svg class="fill-gray-700" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path></svg>
-                اطلاعات شخصی
+        <li class="group">
+            <a href="#" class="text-zinc-600 hover:text-primary-500 text-s flex gap-x-2 p-2 rounded-lg group-hover:bg-zinc-100">
+                <svg class="group-hover:fill-primary-500" xmlns="http://www.w3.org/2000/svg" fill="#52525C" width="21" height="21" viewBox="0 0 256 256"><path d="M248,120h-8V88a16,16,0,0,0-16-16H208V64a16,16,0,0,0-16-16H168a16,16,0,0,0-16,16v56H104V64A16,16,0,0,0,88,48H64A16,16,0,0,0,48,64v8H32A16,16,0,0,0,16,88v32H8a8,8,0,0,0,0,16h8v32a16,16,0,0,0,16,16H48v8a16,16,0,0,0,16,16H88a16,16,0,0,0,16-16V136h48v56a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16v-8h16a16,16,0,0,0,16-16V136h8a8,8,0,0,0,0-16ZM32,168V88H48v80Zm56,24H64V64H88V192Zm104,0H168V64h24V175.82c0,.06,0,.12,0,.18s0,.12,0,.18V192Zm32-24H208V88h16Z"></path></svg>
+                مشخصات ورزشی و غذایی
             </a>
         </li>
-        <li>
-            <a onclick="logout()" class="py-3 px-4 hover:bg-gradient-to-l hover:from-red-200 text-red-500 hover:text-red-600 hover:to-transparent rounded-lg flex gap-x-2 group">
-                <svg class="fill-gray-700 group-hover:fill-red-600 transition" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><path d="M120,216a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H56V208h56A8,8,0,0,1,120,216Zm109.66-93.66-40-40a8,8,0,0,0-11.32,11.32L204.69,120H112a8,8,0,0,0,0,16h92.69l-26.35,26.34a8,8,0,0,0,11.32,11.32l40-40A8,8,0,0,0,229.66,122.34Z"></path></svg>
+        <li class="group">
+            <a href="#" class="text-zinc-600 hover:text-primary-500 text-s flex gap-x-2 p-2 rounded-lg group-hover:bg-zinc-100">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="group-hover:stroke-primary-500" d="M4.16841 16.1211C5.2822 13.615 7.76737 12 10.5098 12H13.4902C16.2326 12 18.7178 13.615 19.8316 16.1211C20.8514 18.4156 19.1718 21 16.6609 21H7.33909C4.82819 21 3.14864 18.4156 4.16841 16.1211Z" stroke="#52525C" stroke-width="1.5" stroke-linejoin="round"></path>
+                    <path class="group-hover:stroke-primary-500" d="M9 6C9 4.34315 10.3431 3 12 3C13.6569 3 15 4.34315 15 6C15 7.65685 13.6569 9 12 9C10.3431 9 9 7.65685 9 6Z" stroke="#52525C" stroke-width="1.5" stroke-linejoin="round"></path>
+                </svg>
+                مشخصات فردی
+            </a>
+        </li>
+        <li class="group">
+            <a href="#" class="text-zinc-600 hover:text-red-500 text-s flex gap-x-2 p-2 rounded-lg group-hover:bg-zinc-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" class="rtl-enabled">
+                    <path class="stroke-zinc-600 group-hover:stroke-red-500" d="M9 4.5H8C5.64298 4.5 4.46447 4.5 3.73223 5.23223C3 5.96447 3 7.14298 3 9.5V14.5C3 16.857 3 18.0355 3.73223 18.7678C4.46447 19.5 5.64298 19.5 8 19.5H9" stroke="#1C274C" stroke-width="1.5"></path>
+                    <path class="stroke-zinc-600 group-hover:stroke-red-500" d="M9 6.4764C9 4.18259 9 3.03569 9.70725 2.4087C10.4145 1.78171 11.4955 1.97026 13.6576 2.34736L15.9864 2.75354C18.3809 3.17118 19.5781 3.37999 20.2891 4.25826C21 5.13652 21 6.40672 21 8.94711V15.0529C21 17.5933 21 18.8635 20.2891 19.7417C19.5781 20.62 18.3809 20.8288 15.9864 21.2465L13.6576 21.6526C11.4955 22.0297 10.4145 22.2183 9.70725 21.5913C9 20.9643 9 19.8174 9 17.5236V6.4764Z" stroke="#1C274C" stroke-width="1.5"></path>
+                    <path class="stroke-zinc-600 group-hover:stroke-red-500" d="M12 11V13" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"></path>
+                </svg>
                 خروج
             </a>
         </li>
     </ul>
 </div>
-<div class="w-full lg:w-[83%] mr-auto flex flex-col min-h-screen">
-    <!-- header -->
-    <header class="bg-white w-full h-14 flex justify-between items-center px-4 shrink-0">
-        <div class="flex gap-x-3 items-center">
-            <!-- btn menu mobile -->
-            <svg class="lg:hidden fill-zinc-800 menu-mobile" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>
-            <div class="md:text-lg md:font-yekanBakhBold text-zinc-600">
-                صفحه اصلی
-            </div>
-        </div>
-        <div class="flex items-center cursor-pointer group relative hover:bg-zinc-100 transition px-4 py-2 rounded-lg">
-        <span class="flex items-center gap-x-1">
-          <span class="text-zinc-400 text-xs">
-            سلام،
-          </span>
-          <span id="showFullName" class="text-zinc-600 text-sm">
-            <?= $getInfoUser['userFullName'] ?>
-          </span>
-        </span>
-            <div class="z-50 group-hover:block left-0 top-[37px] w-60 rounded-lg bg-white drop-shadow-lg hidden absolute">
-                <ul class="space-y-1 p-2">
-                    <li>
-                        <a class="flex items-center justify-between gap-x-2 rounded-lg p-2 text-zinc-700 hover:text-zinc-800 transition hover:bg-gray-100" href="./order">
-                            <span class="flex items-center gap-x-2">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M237.9,198.36l-14.25-120a14.06,14.06,0,0,0-14-12.36H174V64a46,46,0,0,0-92,0v2H46.33a14.06,14.06,0,0,0-14,12.36l-14.25,120a14,14,0,0,0,14,15.64H223.92a14,14,0,0,0,14-15.64ZM94,64a34,34,0,0,1,68,0v2H94ZM225.5,201.3a2.07,2.07,0,0,1-1.58.7H32.08a2.07,2.07,0,0,1-1.58-.7,1.92,1.92,0,0,1-.49-1.53l14.26-120A2,2,0,0,1,46.33,78H209.67a2,2,0,0,1,2.06,1.77l14.26,120A1.92,1.92,0,0,1,225.5,201.3Z"></path></svg>
-                              <span class="text-sm">سفارش ها</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="flex items-center justify-between gap-x-2 rounded-lg p-2 text-zinc-700 hover:text-zinc-800 transition hover:bg-gray-100" href="/favorites">
-                            <span class="flex items-center gap-x-2">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M178,34c-21,0-39.26,9.47-50,25.34C117.26,43.47,99,34,78,34A60.07,60.07,0,0,0,18,94c0,29.2,18.2,59.59,54.1,90.31a334.68,334.68,0,0,0,53.06,37,6,6,0,0,0,5.68,0,334.68,334.68,0,0,0,53.06-37C219.8,153.59,238,123.2,238,94A60.07,60.07,0,0,0,178,34ZM128,209.11C111.59,199.64,30,149.72,30,94A48.05,48.05,0,0,1,78,46c20.28,0,37.31,10.83,44.45,28.27a6,6,0,0,0,11.1,0C140.69,56.83,157.72,46,178,46a48.05,48.05,0,0,1,48,48C226,149.72,144.41,199.64,128,209.11Z"></path></svg>
-                              <span class="text-sm">علاقه مندی ها</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="flex items-center justify-between gap-x-2 rounded-lg p-2 text-zinc-700 hover:text-zinc-800 transition hover:bg-gray-100" href="/dashboardMessages">
-                            <span class="flex items-center gap-x-2">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M227.33,91l-96-64a6,6,0,0,0-6.66,0l-96,64A6,6,0,0,0,26,96V200a14,14,0,0,0,14,14H216a14,14,0,0,0,14-14V96A6,6,0,0,0,227.33,91ZM100.18,152,38,195.9V107.65Zm12.27,6h31.1l62.29,44H50.16Zm43.37-6L218,107.65V195.9ZM128,39.21l85.43,57L143.53,146H112.47L42.57,96.17Z"></path></svg>
-                              <span>پیغام ها</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a onclick="logout()" class="flex items-center justify-between gap-x-2 rounded-lg p-2 text-red-500 hover:text-red-600 transition hover:bg-red-100" href="">
-                            <div class="flex items-center gap-x-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M110,216a6,6,0,0,1-6,6H48a14,14,0,0,1-14-14V48A14,14,0,0,1,48,34h56a6,6,0,0,1,0,12H48a2,2,0,0,0-2,2V208a2,2,0,0,0,2,2h56A6,6,0,0,1,110,216Zm110.24-92.24-40-40a6,6,0,0,0-8.48,8.48L201.51,122H104a6,6,0,0,0,0,12h97.51l-29.75,29.76a6,6,0,1,0,8.48,8.48l40-40A6,6,0,0,0,220.24,123.76Z"></path></svg>
-                                <span>خروج از حساب کاربری</span>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
-    <?= $_SESSION['page']['content'] ?>
-    <footer class="bg-white h-12 flex items-center justify-end px-5 w-full text-zinc-500 text-xs shrink-0">
-        تمامی حقوق توسط تیم برنامه نویسی امیران محفوظ است.
-    </footer>
-</div>
-<script src='../../assets/user/js/jquery-3.2.1.min.js'></script>
-<?= $_SESSION['page']['script'] ?>
-<script src='./../../assets/user/js/sweetalert.js'></script>
-<script>
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-    })
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            document.getElementById('btnSearchProduct').click();
-        }
-    });
-</script>
-<script src="../../assets/user/js/main.js"></script>
-</body>
-
-
-</html>

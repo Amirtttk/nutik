@@ -2,7 +2,6 @@
 $router->add('', function () {
     renderUserView('index');
 });
-
 $router->add('/index', function () {
     renderUserView('index');
 });
@@ -19,10 +18,13 @@ $router->add('/login', function () {
     renderUserLogin('login');
 });
 $router->add('/dashboard', function () {
-    renderUserProfileView('dashboard');
+    renderUserView('dashboard');
+});
+$router->add('/PersonalInfo', function () {
+    renderUserView('dashboardPersonalInfo');
 });
 $router->add('/address', function () {
-    renderUserProfileView('dashboardAddress');
+    renderUserView('dashboardAddress');
 });
 $router->add('/details', function () {
     renderUserProfileView('dashboardDetails');
@@ -31,10 +33,10 @@ $router->add('/favorites', function () {
     renderUserProfileView('dashboardFavorites');
 });
 $router->add('/ticket', function () {
-    renderUserProfileView('dashboardTicket');
+    renderUserView('dashboardTicket');
 });
 $router->add('/ticketDetails', function () {
-    renderUserProfileView('dashboardTicketDetails');
+    renderUserView('dashboardTicketDetails');
 });
 $router->add('/dashboardMessages', function () {
     renderUserProfileView('dashboardMessages');

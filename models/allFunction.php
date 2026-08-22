@@ -462,3 +462,44 @@ function getOneAdvertising($id){
     }
     return false;
 }
+function getCityAndProvinceByCityId($cityId){
+    try {
+        global $cn;
+        $sql = "SELECT city.id as city_id, city.name as city_name, 
+                       province.id as province_id, province.name as province_name
+                FROM city
+                JOIN province ON city.province_id = province.id
+                WHERE city.id = ?";
+
+        $stmt = $cn->prepare($sql);
+        $stmt->bindParam(1, $cityId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0){
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } else {
+            return null;  // شهر پیدا نشد
+        }
+    } catch (PDOException $e) {
+        // می‌تونی اینجا خطا رو لاگ کنی یا هندل کنی
+        return false;
+    }
+}
+function getTicketById($id) {
+    global $cn;
+    $stmt = $cn->prepare("SELECT * FROM tickets WHERE id = ?");
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+function getChatTicketsByIdAdmin($ticketId)
+{
+    global $cn;
+    $sql = "select * from chat_tickets where id = ? AND sender = 1 ORDER BY id DESC ";
+    $result = $cn->prepare($sql);
+    $result->bindValue(1, $ticketId);
+    $result->execute();
+    if ($result->rowCount() > 0) {
+        return $result->fetch();
+    }
+    return false;
+}

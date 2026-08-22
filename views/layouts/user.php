@@ -62,12 +62,12 @@ $getInformation = getInformation();
                     </li>
                     <ul class="space-y-2">
                         <li>
-                            <!-- level 1 --> 
+                            <!-- level 1 -->
                             <button class="menu-toggle flex flex-row-reverse justify-between items-center w-full py-3 px-4 hover:bg-gray-100 rounded-lg">
-                                <img class="w-4 transition-transform" src="./../../assets/user/image/caret-down.svg">
+                                <img class="w-4 transition-transform" src="./assets/image/caret-down.svg">
                                 <div class="flex items-center gap-x-2">
                                     <div class="shadow-custom bg-white p-2 rounded-xl">
-                                        <img class="max-w-10" src="./../../assets/user/image/category/1.webp" alt="">
+                                        <img class="max-w-10" src="./assets/image/category/1.webp" alt="">
                                     </div>
                                     <span>پـروتـئـیـن</span>
                                 </div>
@@ -79,7 +79,7 @@ $getInformation = getInformation();
                                         <a href="/">
                                             پودر پروتئین
                                         </a>
-                                        <img class="w-4 transition-transform" src="./../../assets/user/image/caret-down.svg">
+                                        <img class="w-4 transition-transform" src="./assets/image/caret-down.svg">
                                     </button>
                                     <ul class="submenu hidden space-y-2 text-xs border-r border-zinc-300">
                                         <li>
@@ -105,7 +105,7 @@ $getInformation = getInformation();
                                         <a href="/">
                                             لوازم جانبی موبایل
                                         </a>
-                                        <img class="w-4 transition-transform" src="./../../assets/user/image/caret-down.svg">
+                                        <img class="w-4 transition-transform" src="./assets/image/caret-down.svg">
                                     </button>
                                     <ul class="submenu hidden pr-6 space-y-2 text-xs">
                                         <li>
@@ -175,7 +175,7 @@ $getInformation = getInformation();
                           </span>
                             </div>
                             <div class="text-zinc-700 font-yekanBakhSemiBold text-xs md:text-sm tracking-wider">
-                               <?=$getInformation['mobileHeather']?>
+                                09304809034
                             </div>
                         </div>
                         <div class="p-1 rounded-2xl border border-zinc-300 bg-zinc-50">
@@ -195,7 +195,7 @@ $getInformation = getInformation();
                           </span>
                             </div>
                             <div class="text-zinc-700 font-yekanBakhSemiBold text-xs md:text-sm tracking-wider">
-                                <?=$getInformation['mobileHeather2']?>
+                                09304809034
                             </div>
                         </div>
                         <div class="p-1 rounded-2xl border border-zinc-300 bg-zinc-50">
@@ -206,7 +206,7 @@ $getInformation = getInformation();
             </div>
             <!-- logo -->
             <a href="/">
-                <img src="./../../assets/user/image/logo.png" class="max-w-20 md:max-w-24 h-fit" alt="">
+                <img src="./assets/image/logo.png" class="max-w-20 md:max-w-24 h-fit" alt="">
             </a>
             <!-- seacrh desktop -->
             <div class="relative hidden lg:block" id="search-container">
@@ -214,7 +214,7 @@ $getInformation = getInformation();
                 <kbd id="search-shortcut" class="search-shortcut" aria-hidden="true"><span>K</span><span>+</span><span>Ctrl</span></kbd>
                 <!-- BACKDROP -->
                 <div id="search-backdrop" class="fixed inset-0 bg-black/30 backdrop-blur-[1px] z-40 opacity-0 pointer-events-none"></div>
-                <svg class="top-4 absolute right-4 size-5 z-[55]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <svg class="top-4 absolute right-4 size-5 z-[55]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="rtl-enabled">
                     <path opacity="0.7" d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z" stroke="#52525c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path opacity="0.7" d="M22 22L20 20" stroke="#52525c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -241,7 +241,7 @@ $getInformation = getInformation();
                         <div class="swiper-wrapper pr-4 py-4">
                             <a href="#" class="swiper-slide">
                                 <div class="group bg-zinc-100 shadow-custom rounded-2xl p-1.5">
-                                    <img class="rounded-xl" src="./../../assets/user/image/product/1.webp" alt="">
+                                    <img class="rounded-xl" src="./assets/image/product/1.webp" alt="">
                                     <div class="flex flex-col gap-1.5 mt-1">
                                         <div class="truncate-text text-xs text-zinc-800 font-yekanBakhBold line-clamp-2 h-10">
                                             پودر پروتئین با طعم بیسکوئیت کاله پرو
@@ -261,7 +261,7 @@ $getInformation = getInformation();
                             </a>
                             <a href="#" class="swiper-slide">
                                 <div class="group bg-zinc-100 shadow-custom rounded-2xl p-1.5">
-                                    <img class="rounded-xl" src="./../../assets/user/image/product/2.webp" alt="">
+                                    <img class="rounded-xl" src="./assets/image/product/2.webp" alt="">
                                     <div class="flex flex-col gap-1.5 mt-1">
                                         <div class="truncate-text text-xs text-zinc-800 font-yekanBakhBold line-clamp-2 h-10">
                                             پودر پروتئین با طعم بیسکوئیت کاله پرو
@@ -281,7 +281,7 @@ $getInformation = getInformation();
                             </a>
                             <a href="#" class="swiper-slide">
                                 <div class="group bg-zinc-100 shadow-custom rounded-2xl p-1.5">
-                                    <img class="rounded-xl" src="./../../assets/user/image/product/3.webp" alt="">
+                                    <img class="rounded-xl" src="./assets/image/product/3.webp" alt="">
                                     <div class="flex flex-col gap-1.5 mt-1">
                                         <div class="truncate-text text-xs text-zinc-800 font-yekanBakhBold line-clamp-2 h-10">
                                             پودر پروتئین با طعم بیسکوئیت کاله پرو
@@ -301,7 +301,7 @@ $getInformation = getInformation();
                             </a>
                             <a href="#" class="swiper-slide">
                                 <div class="group bg-zinc-100 shadow-custom rounded-2xl p-1.5">
-                                    <img class="rounded-xl" src="./../../assets/user/image/product/4.webp" alt="">
+                                    <img class="rounded-xl" src="./assets/image/product/4.webp" alt="">
                                     <div class="flex flex-col gap-1.5 mt-1">
                                         <div class="truncate-text text-xs text-zinc-800 font-yekanBakhBold line-clamp-2 h-10">
                                             پودر پروتئین با طعم بیسکوئیت کاله پرو
@@ -321,7 +321,7 @@ $getInformation = getInformation();
                             </a>
                             <a href="#" class="swiper-slide">
                                 <div class="group bg-zinc-100 shadow-custom rounded-2xl p-1.5">
-                                    <img class="rounded-xl" src="./../../assets/user/image/product/5.webp" alt="">
+                                    <img class="rounded-xl" src="./assets/image/product/5.webp" alt="">
                                     <div class="flex flex-col gap-1.5 mt-1">
                                         <div class="truncate-text text-xs text-zinc-800 font-yekanBakhBold line-clamp-2 h-10">
                                             پودر پروتئین با طعم بیسکوئیت کاله پرو
@@ -476,7 +476,7 @@ $getInformation = getInformation();
                             <li class="p-3 rounded-2xl bg-zinc-50/80 hover:bg-zinc-50 transition">
                                 <div class="flex gap-x-3">
                                     <a href="" class="shrink-0 size-20 rounded-xl overflow-hidden bg-white border border-zinc-100">
-                                        <img class="w-full h-full object-cover" src="./../../assets/user/image/product/1.webp" alt="">
+                                        <img class="w-full h-full object-cover" src="./assets/image/product/1.webp" alt="">
                                     </a>
                                     <div class="flex-1 min-w-0">
                                         <a href="" class="text-xs text-zinc-800 font-yekanBakhSemiBold leading-5 line-clamp-2 hover:text-primary-500 transition">
@@ -516,7 +516,7 @@ $getInformation = getInformation();
                             <li class="p-3 rounded-2xl bg-zinc-50/80 hover:bg-zinc-50 transition">
                                 <div class="flex gap-x-3">
                                     <a href="" class="shrink-0 size-20 rounded-xl overflow-hidden bg-white border border-zinc-100">
-                                        <img class="w-full h-full object-cover" src="./../../assets/user/image/product/1.webp" alt="">
+                                        <img class="w-full h-full object-cover" src="./assets/image/product/1.webp" alt="">
                                     </a>
                                     <div class="flex-1 min-w-0">
                                         <a href="" class="text-xs text-zinc-800 font-yekanBakhSemiBold leading-5 line-clamp-2 hover:text-primary-500 transition">
@@ -589,7 +589,7 @@ $getInformation = getInformation();
                                 <li class="category-item group/cat rounded-xl px-2 py-2 cursor-pointer active-category hover:bg-zinc-100 hover:transition-all transition-all" data-category="cat1">
                                     <a class="flex items-center gap-x-2" href="#">
                                         <div class="shadow-custom bg-white p-2 rounded-xl">
-                                            <img class="max-w-16" src="./../../assets/user/image/category/1.webp" alt="">
+                                            <img class="max-w-16" src="./assets/image/category/1.webp" alt="">
                                         </div>
                                         <div class="flex flex-col gap-y-2">
                                             <div class="text-s text-zinc-700 font-yekanBakhRegular group-hover/cat:text-primary-500">
@@ -607,7 +607,7 @@ $getInformation = getInformation();
                                 <li class="category-item group/cat rounded-xl px-2 py-2 cursor-pointer active-category hover:bg-zinc-100 hover:transition-all transition-all" data-category="cat2">
                                     <a class="flex items-center gap-x-2" href="#">
                                         <div class="shadow-custom bg-white p-2 rounded-xl">
-                                            <img class="max-w-16" src="./../../assets/user/image/category/2.webp" alt="">
+                                            <img class="max-w-16" src="./assets/image/category/2.webp" alt="">
                                         </div>
                                         <div class="flex flex-col gap-y-2">
                                             <div class="text-s text-zinc-700 font-yekanBakhRegular group-hover/cat:text-primary-500">
@@ -625,7 +625,7 @@ $getInformation = getInformation();
                                 <li class="category-item group/cat rounded-xl px-2 py-2 cursor-pointer active-category hover:bg-zinc-100 hover:transition-all transition-all" data-category="cat3">
                                     <a class="flex items-center gap-x-2" href="#">
                                         <div class="shadow-custom bg-white p-2 rounded-xl">
-                                            <img class="max-w-16" src="./../../assets/user/image/category/3.webp" alt="">
+                                            <img class="max-w-16" src="./assets/image/category/3.webp" alt="">
                                         </div>
                                         <div class="flex flex-col gap-y-2">
                                             <div class="text-s text-zinc-700 font-yekanBakhRegular group-hover/cat:text-primary-500">
@@ -643,7 +643,7 @@ $getInformation = getInformation();
                                 <li class="category-item group/cat rounded-xl px-2 py-2 cursor-pointer active-category hover:bg-zinc-100 hover:transition-all transition-all" data-category="cat4">
                                     <a class="flex items-center gap-x-2" href="#">
                                         <div class="shadow-custom bg-white p-2 rounded-xl">
-                                            <img class="max-w-16" src="./../../assets/user/image/category/4.webp" alt="">
+                                            <img class="max-w-16" src="./assets/image/category/4.webp" alt="">
                                         </div>
                                         <div class="flex flex-col gap-y-2">
                                             <div class="text-s text-zinc-700 font-yekanBakhRegular group-hover/cat:text-primary-500">
@@ -661,7 +661,7 @@ $getInformation = getInformation();
                                 <li class="category-item group/cat rounded-xl px-2 py-2 cursor-pointer active-category hover:bg-zinc-100 hover:transition-all transition-all" data-category="cat5">
                                     <a class="flex items-center gap-x-2" href="#">
                                         <div class="shadow-custom bg-white p-2 rounded-xl">
-                                            <img class="max-w-16" src="./../../assets/user/image/category/5.webp" alt="">
+                                            <img class="max-w-16" src="./assets/image/category/5.webp" alt="">
                                         </div>
                                         <div class="flex flex-col gap-y-2">
                                             <div class="text-s text-zinc-700 font-yekanBakhRegular group-hover/cat:text-primary-500">
@@ -679,7 +679,7 @@ $getInformation = getInformation();
                                 <li class="category-item group/cat rounded-xl px-2 py-2 cursor-pointer active-category hover:bg-zinc-100 hover:transition-all transition-all" data-category="cat6">
                                     <a class="flex items-center gap-x-2" href="#">
                                         <div class="shadow-custom bg-white p-2 rounded-xl">
-                                            <img class="max-w-16" src="./../../assets/user/image/category/6.webp" alt="">
+                                            <img class="max-w-16" src="./assets/image/category/6.webp" alt="">
                                         </div>
                                         <div class="flex flex-col gap-y-2">
                                             <div class="text-s text-zinc-700 font-yekanBakhRegular group-hover/cat:text-primary-500">
@@ -1498,7 +1498,7 @@ $getInformation = getInformation();
                 </a>
             </li>
             <li>
-                <a href="/contactUs" class="flex gap-x-1.5 items-center group relative px-4 py-2.5">
+                <a href="#" class="flex gap-x-1.5 items-center group relative px-4 py-2.5">
                     <svg class="group-hover:fill-zinc-700" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4.02513 4.0716L3.4949 3.54117H3.4949L4.02513 4.0716ZM8.97487 4.0716L9.5051 3.54117L8.97487 4.0716ZM8.97487 9.01942L8.44465 8.48898L8.97487 9.01942ZM14.9853 15.0275L14.4551 14.497L14.9853 15.0275ZM19.935 19.9753L19.4048 19.4449L19.935 19.9753ZM7.56066 16.4411L7.03043 16.9716L7.56066 16.4411ZM3.01853 6.90616L3.76852 6.9019C3.76838 6.87764 3.76707 6.8534 3.76458 6.82926L3.01853 6.90616ZM17.0994 20.9815L17.1762 20.2354C17.1521 20.233 17.1279 20.2316 17.1036 20.2315L17.0994 20.9815ZM7.05559 10L6.9372 9.25944C6.69728 9.29779 6.49081 9.44999 6.38319 9.66782C6.27556 9.88565 6.28013 10.1421 6.39544 10.356L7.05559 10ZM14.0043 16.946L13.6486 17.6063C13.8624 17.7215 14.1188 17.726 14.3366 17.6184C14.5543 17.5108 14.7065 17.3043 14.7449 17.0645L14.0043 16.946ZM4.55535 4.60203C5.62932 3.52849 7.37068 3.52849 8.44465 4.60203L9.5051 3.54117C7.8454 1.88211 5.1546 1.88211 3.4949 3.54117L4.55535 4.60203ZM8.44465 4.60203C9.51845 5.67542 9.51845 7.4156 8.44465 8.48898L9.5051 9.54985C11.165 7.89063 11.165 5.20039 9.5051 3.54117L8.44465 4.60203ZM15.5155 15.5579C16.5895 14.4844 18.3308 14.4844 19.4048 15.5579L20.4653 14.497C18.8055 12.838 16.1148 12.838 14.4551 14.497L15.5155 15.5579ZM19.4048 15.5579C20.4786 16.6313 20.4786 18.3715 19.4048 19.4449L20.4653 20.5057C22.1251 18.8465 22.1251 16.1563 20.4653 14.497L19.4048 15.5579ZM8.09089 15.9107C5.26504 13.086 3.78435 9.69148 3.76852 6.9019L2.26854 6.91041C2.28711 10.1813 3.99291 13.9352 7.03043 16.9716L8.09089 15.9107ZM3.76458 6.82926C3.6825 6.03286 3.94644 5.21071 4.55535 4.60203L3.4949 3.54117C2.5532 4.4825 2.14608 5.75662 2.27248 6.98305L3.76458 6.82926ZM19.4048 19.4449C18.7959 20.0536 17.9732 20.3175 17.1762 20.2354L17.0225 21.7275C18.2491 21.8539 19.5236 21.447 20.4653 20.5057L19.4048 19.4449ZM17.1036 20.2315C14.3127 20.2157 10.9167 18.7354 8.09089 15.9107L7.03043 16.9716C10.068 20.0079 13.8232 21.7129 17.0951 21.7315L17.1036 20.2315ZM8.44465 8.48898C8.01844 8.91502 7.48913 9.17121 6.9372 9.25944L7.17398 10.7406C8.02737 10.6042 8.84804 10.2067 9.5051 9.54985L8.44465 8.48898ZM10.5658 13.4368C9.37781 12.2493 8.42284 10.9555 7.71575 9.6441L6.39544 10.356C7.17383 11.7997 8.21742 13.2103 9.50531 14.4977L10.5658 13.4368ZM14.7449 17.0645C14.8331 16.513 15.0893 15.9839 15.5155 15.5579L14.4551 14.497C13.798 15.1539 13.4002 15.9743 13.2637 16.8275L14.7449 17.0645ZM14.36 16.2857C13.048 15.5789 11.7537 14.6243 10.5658 13.4368L9.50531 14.4977C10.7932 15.785 12.2044 16.8282 13.6486 17.6063L14.36 16.2857Z" fill="#292556"></path>
                     </svg>
@@ -1534,7 +1534,7 @@ $getInformation = getInformation();
                 </span>
                     </div>
                     <div class="text-zinc-700 font-yekanBakhSemiBold text-xs md:text-sm tracking-wider">
-                        <?=$getInformation['mobileHeather']?>
+                        09304809034
                     </div>
                 </div>
                 <div class="p-1 rounded-2xl border border-zinc-300 bg-zinc-50">
@@ -1554,7 +1554,7 @@ $getInformation = getInformation();
                 </span>
                     </div>
                     <div class="text-zinc-700 font-yekanBakhSemiBold text-xs md:text-sm tracking-wider">
-                        <?=$getInformation['mobileHeather2']?>
+                        09304809034
                     </div>
                 </div>
                 <div class="p-1 rounded-2xl border border-zinc-300 bg-zinc-50">
@@ -1563,6 +1563,7 @@ $getInformation = getInformation();
             </a>
         </div>
     </div>
+    <div id="stickySubPlaceholder" style="height: 0px;"></div>
 </header>
 <?= $_SESSION['page']['content'] ?>
 <footer class="bg-[#222222] pt-6 xl:pt-10">

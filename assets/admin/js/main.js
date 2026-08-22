@@ -218,7 +218,6 @@ function updateTheme(id) {
 function updateInfoUser() {
   let userFullName = $('input[name="userFullName"]').val(),
       userName = $('input[name="userName"]').val(),
-      dateBirth = $('input[name="dateBirth"]').val(),
       gender = $('select[name="gender"]').val(),
       btnUpdateInfo = document.getElementById("btnUpdateInfo");
 

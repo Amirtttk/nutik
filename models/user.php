@@ -352,16 +352,37 @@ function getTickets($userID)
 {
     global $cn;
     $sql = "SELECT t.*, 
-                   COALESCE(ct.sender, 0) AS last_sender, 
-                   COALESCE(ct.timeSend, '1970-01-01 00:00:00') AS last_message_time
-            FROM tickets t
-            LEFT JOIN (
-                SELECT c1.ticketId, c1.sender, c1.timeSend
-                FROM chat_tickets c1
-                WHERE c1.id = (SELECT MAX(c2.id) FROM chat_tickets c2 WHERE c2.ticketId = c1.ticketId)
-            ) ct ON t.id = ct.ticketId
-            WHERE t.userID = ?
-            ORDER BY (t.status = 1) DESC, (ct.sender = 1) DESC, ct.timeSend DESC";
+       COALESCE(ct.sender, 0) AS last_sender, 
+       COALESCE(ct.timeSend, '1970-01-01 00:00:00') AS last_message_time
+FROM tickets t
+LEFT JOIN (
+    SELECT c1.ticketId, c1.sender, c1.timeSend
+    FROM chat_tickets c1
+    WHERE c1.id = (SELECT MAX(c2.id) FROM chat_tickets c2 WHERE c2.ticketId = c1.ticketId)
+) ct ON t.id = ct.ticketId
+WHERE t.userID = ?
+  AND t.status = 1  
+ORDER BY 
+    (COALESCE(ct.sender, 0) != 1) DESC, 
+    ct.timeSend DESC                   
+        ";
+    $result = $cn->prepare($sql);
+    $result->bindValue(1, $userID);
+    $result->execute();
+    if ($result->rowCount() > 0) {
+        return $result->fetchAll();
+    }
+    return false;
+}
+function getTicketsByStatus($userID)
+{
+    global $cn;
+    $sql = "SELECT * 
+            FROM tickets 
+            WHERE userID = ? 
+              AND status = 2
+            ORDER BY id DESC
+                ";
     $result = $cn->prepare($sql);
     $result->bindValue(1, $userID);
     $result->execute();

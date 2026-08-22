@@ -20,7 +20,6 @@ if ($validate_fields['status']) {
             'type' => 'success',
             'status' => 200,
         ]);
-       
     } else {
         responseJson([
             'text' => 'در ویرایش اطلاعات سایت  مشکلی پیش آمده است',

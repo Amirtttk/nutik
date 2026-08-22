@@ -175,15 +175,15 @@ if (document.getElementById("stickyDiv")) {
   const subTop = stickySub.offsetTop;
   let lastScroll = window.scrollY;
   let lastScrolled = 0;
-    window.addEventListener("scroll", () => {
-      let current = window.scrollY;
-      if (current > lastScrolled) {
-        stickySub.style.top = "0";
-      } else {
-        stickySub.style.top = "80px";
-      }
-      lastScrolled = current;
-    });
+  window.addEventListener("scroll", () => {
+    let current = window.scrollY;
+    if (current > lastScrolled) {
+      stickySub.style.top = "0";
+    } else {
+      stickySub.style.top = "80px";
+    }
+    lastScrolled = current;
+  });
   window.addEventListener("scroll", () => {
     const sc = window.scrollY;
     if (sc >= stickyTop) {
@@ -856,6 +856,318 @@ function logout() {
       response = JSON.parse(response);
       if (response.status == 200) {
         location.replace("/");
+      }
+    },
+  });
+}
+function updateInfoUser() {
+  let userFullName = $('input[name="userFullName"]').val(),
+      gender = $('select[name="gender"]').val(),
+      btnUpdateInfo = document.getElementById("btnUpdateInfo");
+
+  btnUpdateInfo.disabled = true;
+  $.ajax({
+    url: `${domain}requests/user/updateInformation.php`,
+    type: "POST",
+    data: {
+      userFullName,
+      gender,
+    },
+    success: function (response) {
+      response = JSON.parse(response);
+      setTimeout(() => {
+        btnUpdateInfo.disabled = false;
+      }, 3000);
+      if (response.status == 200) {
+        //document.getElementById("divShowError").classList.add("d-none");
+        //document.getElementById("showError").innerHTML = "";
+        document.getElementById("showFullName").innerHTML = userFullName;
+        //document.getElementById("showFullNameProfile").innerHTML = userFullName;
+        Toast.fire({
+          icon: response.type,
+          title: response.text,
+        });
+      } else {
+        //document.getElementById("divShowError").classList.remove("d-none");
+        //document.getElementById("showError").innerHTML = response.text;
+        scroll(150, 1000);
+        Toast.fire({
+          icon: response.type,
+          title: response.text,
+        });
+      }
+    },
+  });
+}
+function delteAddress(Id) {
+  $.ajax({
+    url: `${domain}requests/address/delete.php`,
+    type: "POST",
+    data: {
+      Id,
+    },
+    success: function (response) {
+      response = JSON.parse(response);
+      if (response.status == 200) {
+        Toast.fire({
+          icon: response.type,
+          title: response.text,
+        });
+        if(response.len == 0){
+          document.getElementById('deleteAddres').innerHTML=` <img src="./../../assets/user/image/address.svg" alt="">
+                      <p class="fs-8">هنوز هیچ آدرسی ثبت نکرده اید.</p>`;
+        }
+        document.getElementById('deleteAddres'+Id).style.display="none";
+      } else {
+        Toast.fire({
+          icon: response.type,
+          title: response.text,
+        });
+      }
+    },
+  });
+}
+function createAddress() {
+  let name = $('input[name="name"]').val(),
+      family = $('input[name="family"]').val(),
+      city_id = $('select[name="city_id"]').val(),
+      address = $('input[name="address"]').val(),
+      mobile = $('input[name="mobile"]').val(),
+      post_code = $('input[name="post_code"]').val(),
+      description = $('textarea[name="description"]').val(),
+      getErrors = document.getElementById("getErrors");
+  $.ajax({
+    url: `${domain}requests/address/create.php`,
+    type: "POST",
+    data: {
+      name,
+      family,
+      city_id,
+      address,
+      mobile,
+      post_code,
+      description,
+    },
+    success: function (response) {
+      response = JSON.parse(response);
+      if (response.status == 200) {
+        getErrors.innerHTML = "";
+        Toast.fire({
+          icon: response.type,
+          title: response.text,
+        });
+        document.getElementById('addAddressBox').innerHTML+=`
+          <li id="deleteAddres${response.id}" class="group py-4">
+                      <input type="radio" id="1" name="send" value="1" class="hidden peer group" requiblue="" checked="">
+                      <label for="1" class="cursor-pointer peer-checked:shadow-md text-zinc-600 peer-checked:text-primary-500 block bg-white border border-zinc-200 peer-checked:border-primary-400 p-5 rounded-xl">
+                          <div class="flex justify-between">
+                              <div class="text-xs">
+                                  <div class="flex gap-x-2 items-center">
+                      <span class="text-xs lg:text-sm text-zinc-400 font-yekanBakhRegular">
+                        نام آدرس:
+                      </span>
+                                      <span class="text-smm lg:text-base font-yekanBakhBold">
+                     ${response.city}
+                      </span>
+                                  </div>
+                                  <div class="flex gap-x-2 items-center mt-3 text-zinc-600">
+                      <span class="text-xs lg:text-sm text-zinc-400 font-yekanBakhRegular">
+                        آدرس کامل:
+                      </span>
+                                      <span class="text-smm lg:text-base font-yekanBakhRegular">
+                            ${response.address}
+                      </span>
+                                  </div>
+                                  <div class="flex gap-x-2 items-center mt-3 text-zinc-600">
+                      <span class="text-xs lg:text-sm text-zinc-400 font-yekanBakhRegular">
+                        کد پستی:
+                      </span>
+                                      <span class="text-smm lg:text-base font-yekanBakhRegular">
+                         ${response.post_code}
+                      </span>
+                                  </div>
+                                  <div class="flex gap-x-2 items-center mt-3 text-zinc-600">
+                      <span class="text-xs lg:text-sm text-zinc-400 font-yekanBakhRegular">
+                        گیرنده:
+                      </span>
+                                      <span class="text-smm lg:text-base font-yekanBakhRegular">
+                       ${response.fullName}
+                      </span>
+                                  </div>
+                              </div>
+                              <div class="group/edit relative">
+                                  <svg class="size-5.5 lg:size-6.5 rotate-90" xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none">
+                                      <path class="fill-zinc-700" d="M7 12C7 13.1046 6.10457 14 5 14C3.89543 14 3 13.1046 3 12C3 10.8954 3.89543 10 5 10C6.10457 10 7 10.8954 7 12Z" fill="#1C274C"/>
+                                      <path class="fill-zinc-700" d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" fill="#1C274C"/>
+                                      <path class="fill-zinc-700" d="M21 12C21 13.1046 20.1046 14 19 14C17.8954 14 17 13.1046 17 12C17 10.8954 17.8954 10 19 10C20.1046 10 21 10.8954 21 12Z" fill="#1C274C"/>
+                                  </svg>
+                                  <div class="z-50 group-hover/edit:block left-0 lg:-left-2 top-5 lg:top-8 w-40 rounded-2xl bg-white shadow-custom2 hidden absolute">
+                                      <ul class="py-3">
+                                       <li onclick="delteAddress(${response.id})" class="group/edit flex items-center gap-x-2 py-3 px-4 transition hover:bg-gray-100 text-sm text-red-500 font-yekanBakhRegular">
+                                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                                  <path class="stroke-red-500" fill-rule="evenodd" clip-rule="evenodd" d="M15.7628 9H7.63719C7.18864 9 6.82501 9.37295 6.82501 9.833V16.5C6.82501 17.8807 7.91632 19 9.26251 19H14.1375C14.784 19 15.404 18.7366 15.8611 18.2678C16.3182 17.7989 16.575 17.163 16.575 16.5V9.833C16.575 9.37295 16.2114 9 15.7628 9Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                  <path class="stroke-red-500" fill-rule="evenodd" clip-rule="evenodd" d="M14.625 7L13.9191 5.553C13.7541 5.21427 13.4167 5.0002 13.0475 5H10.3526C9.98338 5.0002 9.64596 5.21427 9.48092 5.553L8.77502 7H14.625Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                  <path class="fill-red-500" d="M10.8247 12.333C10.8247 11.9188 10.4889 11.583 10.0747 11.583C9.66047 11.583 9.32469 11.9188 9.32469 12.333H10.8247ZM9.32469 15.666C9.32469 16.0802 9.66047 16.416 10.0747 16.416C10.4889 16.416 10.8247 16.0802 10.8247 15.666H9.32469ZM14.0753 12.333C14.0753 11.9188 13.7396 11.583 13.3253 11.583C12.9111 11.583 12.5753 11.9188 12.5753 12.333H14.0753ZM12.5753 15.666C12.5753 16.0802 12.9111 16.416 13.3253 16.416C13.7396 16.416 14.0753 16.0802 14.0753 15.666H12.5753ZM14.625 6.25C14.2108 6.25 13.875 6.58579 13.875 7C13.875 7.41421 14.2108 7.75 14.625 7.75V6.25ZM16.575 7.75C16.9892 7.75 17.325 7.41421 17.325 7C17.325 6.58579 16.9892 6.25 16.575 6.25V7.75ZM8.77501 7.75C9.18923 7.75 9.52501 7.41421 9.52501 7C9.52501 6.58579 9.18923 6.25 8.77501 6.25V7.75ZM6.82501 6.25C6.4108 6.25 6.07501 6.58579 6.07501 7C6.07501 7.41421 6.4108 7.75 6.82501 7.75V6.25ZM9.32469 12.333V15.666H10.8247V12.333H9.32469ZM12.5753 12.333V15.666H14.0753V12.333H12.5753ZM14.625 7.75H16.575V6.25H14.625V7.75ZM8.77501 6.25H6.82501V7.75H8.77501V6.25Z" fill="#000000"></path>
+                                              </svg>
+                                              حذف
+                                          </li>
+                                         
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </label>
+                  </li>`;
+        document.getElementById('formAddressForEmpty').reset()
+        document.getElementById('modalSelectAddress').classList.add("hidden");
+        if(document.getElementById('messegeAddress')){
+          document.getElementById('messegeAddress').innerHTML='';
+        }
+
+
+      } else {
+
+        getErrors.innerHTML = response.error;
+        Toast.fire({
+          icon: response.type,
+          title: response.text,
+        });
+      }
+    },
+  });
+}
+function loadCitiesByProvince() {
+  let provinceId = $('#province-select').val();
+  let citySelect = document.getElementById('city-select');
+  let getErrors = document.getElementById('getErrors1');  // فرض کردم بخوای خطاها رو نشون بدی
+
+  if (!provinceId) {
+    citySelect.innerHTML = '<option value="">ابتدا استان را انتخاب کنید</option>';
+    citySelect.disabled = true;
+    return;
+  }
+
+  $.ajax({
+    url: `${domain}requests/address/get_cities.php`,
+    type: "GET",
+    data: { province_id: provinceId },
+    success: function(response) {
+      // فرض می‌کنیم سرور JSON برمی‌گردونه
+      let data;
+      try {
+        data = JSON.parse(response);
+      } catch (e) {
+        getErrors.innerHTML = "خطا در بارگذاری داده‌ها";
+        citySelect.innerHTML = '<option value="">خطا در بارگذاری شهرها</option>';
+        citySelect.disabled = true;
+        return;
+      }
+
+      if (data.length > 0) {
+        getErrors.innerHTML = "";
+        citySelect.innerHTML = "";
+        data.forEach(city => {
+          let option = document.createElement('option');
+          option.value = city.id;
+          option.textContent = city.name;
+          citySelect.appendChild(option);
+        });
+        citySelect.disabled = false;
+      } else {
+        citySelect.innerHTML = '<option value="">شهر یافت نشد</option>';
+        citySelect.disabled = true;
+      }
+    },
+    error: function() {
+      getErrors.innerHTML = "خطا در برقراری ارتباط با سرور";
+      citySelect.innerHTML = '<option value="">خطا در بارگذاری شهرها</option>';
+      citySelect.disabled = true;
+    }
+  });
+}
+function AddNewTicket() {
+  let formData = new FormData();
+  formData.append("fileUrl", $("#dropzone-file")[0].files[0]);
+  formData.append("text", $('textarea[name="text"]').val());
+  formData.append("title", $('input[name="title"]').val());
+  $.ajax({
+    enctype: "multipart/form-data",
+    url: `${domain}requests/tickets/createNewTicket.php`,
+    type: "POST",
+    processData: false,
+    contentType: false,
+    cache: false,
+    data: formData,
+    success: function (response) {
+      response = JSON.parse(response);
+      if (response.status == 200) {
+        Toast.fire({
+          icon: response.type,
+          title: response.text,
+        });
+        setTimeout(() => location.replace("/ticket"), 2000);
+      } else {
+        Toast.fire({
+          icon: response.type,
+          title: response.text,
+        });
+      }
+    },
+  });
+}
+function AddTicketDetails(ticketId) {
+  let formData = new FormData();
+  formData.append("fileUrl", $("#dropzone-file")[0].files[0]);
+  formData.append("text", $('input[name="text"]').val());
+  formData.append("ticketId", ticketId);
+  $.ajax({
+    enctype: "multipart/form-data",
+    url: `${domain}requests/tickets/addTicketDetails.php`,
+    type: "POST",
+    processData: false,
+    contentType: false,
+    cache: false,
+    data: formData,
+    success: function (response) {
+      response = JSON.parse(response);
+      if (response.status == 200) {
+        Toast.fire({
+          icon: response.type,
+          title: response.text,
+        });
+        let downloadFile = "";
+        if (response.fileUrl)
+          downloadFile = `
+                     <form method="get">
+                            <a href="/profile/downloadFile?id=${response.id}" class="flex h-9 w-9 items-center justify-center mt-2 rounded-lg bg-brand-500 text-white bg-primary-500 cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#ffffff" viewBox="0 0 256 256"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-42.34-61.66a8,8,0,0,1,0,11.32l-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L120,164.69V120a8,8,0,0,1,16,0v44.69l10.34-10.35A8,8,0,0,1,157.66,154.34Z"></path></svg>
+                            </a>
+                        </form>
+        `;
+        if (!response.textTicket) {
+          response.textTicket = "";
+        }
+        document.getElementById("ticket").innerHTML = `
+             <div class="max-w-[350px]">
+                    <div class="rounded-lg rounded-tr-xs bg-gray-100 px-3 py-2">
+                        <p class="text-sm text-zinc-700">
+                        ${response.textTicket}
+                            ${downloadFile}
+                    
+                     </p>
+                    </div>
+                    <p class="mt-2 mr-2 font-yekanBakhRegular text-xs text-zinc-500">
+                     ${response.date_org}
+                    </p>
+                </div>
+                `;
+        document.getElementById('textMasseg').value = "";
+
+      } else {
+        Toast.fire({
+          icon: response.type,
+          title: response.text,
+        });
       }
     },
   });
